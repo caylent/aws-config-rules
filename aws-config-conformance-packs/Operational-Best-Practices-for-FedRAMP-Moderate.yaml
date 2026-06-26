@@ -556,7 +556,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: EC2_VOLUME_INUSE_CHECK
     Type: AWS::Config::ConfigRule
-  EcsTaskDefinitionMemoryHardLimit:
+  EcsTaskDefinitionMemoryHardLimit
+    Condition: CommercialPartition:
     Condition: CommercialPartition
     Properties:
       ConfigRuleName: ecs-task-definition-memory-hard-limit
@@ -686,7 +687,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: ELB_TLS_HTTPS_LISTENERS_ONLY
     Type: AWS::Config::ConfigRule
-  Elbv2AcmCertificateRequired:
+  Elbv2AcmCertificateRequired
+    Condition: CommercialPartition:
     Condition: CommercialPartition
     Properties:
       ConfigRuleName: elbv2-acm-certificate-required
@@ -1023,7 +1025,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: NO_UNRESTRICTED_ROUTE_TO_IGW
     Type: AWS::Config::ConfigRule
-  OpensearchLogsToCloudwatch:
+  OpensearchLogsToCloudwatch
+    Condition: CommercialPartition:
     Condition: CommercialPartition
     Properties:
       ConfigRuleName: opensearch-logs-to-cloudwatch
@@ -1225,7 +1228,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: RESTRICTED_INCOMING_TRAFFIC
     Type: AWS::Config::ConfigRule
-  RootAccountHardwareMfaEnabled:
+  RootAccountHardwareMfaEnabled
+    Condition: CommercialPartition:
     Condition: CommercialPartition
     Properties:
       ConfigRuleName: root-account-hardware-mfa-enabled
@@ -1233,7 +1237,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: ROOT_ACCOUNT_HARDWARE_MFA_ENABLED
     Type: AWS::Config::ConfigRule
-  RootAccountMfaEnabled:
+  RootAccountMfaEnabled
+    Condition: CommercialPartition:
     Condition: CommercialPartition
     Properties:
       ConfigRuleName: root-account-mfa-enabled
@@ -1454,6 +1459,10 @@ Resources:
         SourceIdentifier: WAFV2_LOGGING_ENABLED
     Type: AWS::Config::ConfigRule
 Conditions:
+  CommercialPartition:
+    Fn::Equals:
+      - Ref: AWS::Partition
+      - aws
   CommercialPartition:
     Fn::Equals:
       - Ref: AWS::Partition

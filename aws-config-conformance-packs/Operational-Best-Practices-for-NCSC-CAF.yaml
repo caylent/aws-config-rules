@@ -476,7 +476,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: ECS_CONTAINERS_READONLY_ACCESS
     Type: AWS::Config::ConfigRule
-  EcsTaskDefinitionNonrootUser:
+  EcsTaskDefinitionNonrootUser
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: ecs-task-definition-nonroot-user
       Scope:
@@ -910,7 +911,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: MFA_ENABLED_FOR_IAM_CONSOLE_ACCESS
     Type: AWS::Config::ConfigRule
-  OpensearchAccessControlEnabled:
+  OpensearchAccessControlEnabled
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: opensearch-access-control-enabled
       Scope:
@@ -920,7 +922,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: OPENSEARCH_ACCESS_CONTROL_ENABLED
     Type: AWS::Config::ConfigRule
-  OpensearchEncryptedAtRest:
+  OpensearchEncryptedAtRest
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: opensearch-encrypted-at-rest
       Scope:
@@ -930,7 +933,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: OPENSEARCH_ENCRYPTED_AT_REST
     Type: AWS::Config::ConfigRule
-  OpensearchInVpcOnly:
+  OpensearchInVpcOnly
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: opensearch-in-vpc-only
       Scope:
@@ -940,7 +944,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: OPENSEARCH_IN_VPC_ONLY
     Type: AWS::Config::ConfigRule
-  OpensearchNodeToNodeEncryptionCheck:
+  OpensearchNodeToNodeEncryptionCheck
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: opensearch-node-to-node-encryption-check
       Scope:
@@ -1134,14 +1139,16 @@ Resources:
         Owner: AWS
         SourceIdentifier: RESTRICTED_INCOMING_TRAFFIC
     Type: AWS::Config::ConfigRule
-  RootAccountHardwareMfaEnabled:
+  RootAccountHardwareMfaEnabled
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: root-account-hardware-mfa-enabled
       Source:
         Owner: AWS
         SourceIdentifier: ROOT_ACCOUNT_HARDWARE_MFA_ENABLED
     Type: AWS::Config::ConfigRule
-  RootAccountMfaEnabled:
+  RootAccountMfaEnabled
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: root-account-mfa-enabled
       Source:
@@ -1381,7 +1388,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: WAFV2_LOGGING_ENABLED
     Type: AWS::Config::ConfigRule
-  ResponsePlanExistsMaintained:
+  ResponsePlanExistsMaintained
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: response-plan-exists-maintained
       Description: Ensure incident response plans are established, maintained, and distributed to responsible personnel.
@@ -1389,7 +1397,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: AWS_CONFIG_PROCESS_CHECK
     Type: AWS::Config::ConfigRule
-  ResponsePlanTested:
+  ResponsePlanTested
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: response-plan-tested
       Description: Ensure Incident response and recovery plans are tested. This can assist in understanding if your plan will be effective during an incident and if any gaps or updates need to be addressed.
@@ -1398,6 +1407,10 @@ Resources:
         SourceIdentifier: AWS_CONFIG_PROCESS_CHECK
     Type: AWS::Config::ConfigRule
 Conditions:
+  CommercialPartition:
+    Fn::Equals:
+      - Ref: AWS::Partition
+      - aws
   acmCertificateExpirationCheckParamDaysToExpiration:
     Fn::Not:
     - Fn::Equals:

@@ -8,7 +8,8 @@
 ##################################################################################
 
 Resources:
-  AutoscalingCapacityRebalancing:
+  AutoscalingCapacityRebalancing
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: autoscaling-capacity-rebalancing
       Scope:
@@ -28,7 +29,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: AUTOSCALING_GROUP_ELB_HEALTHCHECK_REQUIRED
     Type: AWS::Config::ConfigRule
-  AutoscalingLaunchConfigHopLimit:
+  AutoscalingLaunchConfigHopLimit
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: autoscaling-launch-config-hop-limit
       Scope:
@@ -58,7 +60,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: AUTOSCALING_LAUNCHCONFIG_REQUIRES_IMDSV2
     Type: AWS::Config::ConfigRule
-  AutoscalingMultipleAz:
+  AutoscalingMultipleAz
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: autoscaling-multiple-az
       Scope:

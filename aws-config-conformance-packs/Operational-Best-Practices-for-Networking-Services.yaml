@@ -176,7 +176,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: ELB_TLS_HTTPS_LISTENERS_ONLY
     Type: AWS::Config::ConfigRule
-  Elbv2AcmCertificateRequired:
+  Elbv2AcmCertificateRequired
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: elbv2-acm-certificate-required
       Source:
@@ -309,6 +310,10 @@ Resources:
         SourceIdentifier: VPC_VPN_2_TUNNELS_UP
     Type: AWS::Config::ConfigRule
 Conditions:
+  CommercialPartition:
+    Fn::Equals:
+      - Ref: AWS::Partition
+      - aws
   internetGatewayAuthorizedVpcOnlyParamAuthorizedVpcIds:
     Fn::Not:
     - Fn::Equals:

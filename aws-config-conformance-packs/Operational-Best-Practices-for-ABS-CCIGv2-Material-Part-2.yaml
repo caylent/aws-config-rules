@@ -75,7 +75,8 @@ Resources:
         SourceIdentifier: NO_UNRESTRICTED_ROUTE_TO_IGW
     Type: AWS::Config::ConfigRule
 
-  OpensearchEncryptedAtRest:
+  OpensearchEncryptedAtRest
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: opensearch-encrypted-at-rest
       Scope:
@@ -253,6 +254,10 @@ Resources:
     Type: AWS::Config::ConfigRule
 
 Conditions:
+  CommercialPartition:
+    Fn::Equals:
+      - Ref: AWS::Partition
+      - aws
   redshiftClusterMaintenancesettingsCheckParamAllowVersionUpgrade:
     Fn::Not:
       - Fn::Equals:

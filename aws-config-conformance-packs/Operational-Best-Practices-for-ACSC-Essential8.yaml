@@ -215,7 +215,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: ECS_FARGATE_LATEST_PLATFORM_VERSION
     Type: AWS::Config::ConfigRule
-  EcsTaskDefinitionNonrootUser:
+  EcsTaskDefinitionNonrootUser
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: ecs-task-definition-nonroot-user
       Scope:
@@ -432,14 +433,16 @@ Resources:
         Owner: AWS
         SourceIdentifier: REDSHIFT_CLUSTER_MAINTENANCESETTINGS_CHECK
     Type: AWS::Config::ConfigRule
-  RootAccountHardwareMfaEnabled:
+  RootAccountHardwareMfaEnabled
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: root-account-hardware-mfa-enabled
       Source:
         Owner: AWS
         SourceIdentifier: ROOT_ACCOUNT_HARDWARE_MFA_ENABLED
     Type: AWS::Config::ConfigRule
-  RootAccountMfaEnabled:
+  RootAccountMfaEnabled
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: root-account-mfa-enabled
       Source:
@@ -466,7 +469,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: S3_BUCKET_VERSIONING_ENABLED
     Type: AWS::Config::ConfigRule
-  WafRegionalRuleNotEmpty:
+  WafRegionalRuleNotEmpty
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: waf-regional-rule-not-empty
       Scope:
@@ -476,7 +480,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: WAF_REGIONAL_RULE_NOT_EMPTY
     Type: AWS::Config::ConfigRule
-  WafRegionalRulegroupNotEmpty:
+  WafRegionalRulegroupNotEmpty
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: waf-regional-rulegroup-not-empty
       Scope:
@@ -486,7 +491,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: WAF_REGIONAL_RULEGROUP_NOT_EMPTY
     Type: AWS::Config::ConfigRule
-  WafRegionalWebaclNotEmpty:
+  WafRegionalWebaclNotEmpty
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: waf-regional-webacl-not-empty
       Scope:
@@ -518,6 +524,10 @@ Resources:
         SourceIdentifier: S3_BUCKET_DEFAULT_LOCK_ENABLED
     Type: AWS::Config::ConfigRule
 Conditions:
+  CommercialPartition:
+    Fn::Equals:
+      - Ref: AWS::Partition
+      - aws
   backupPlanMinFrequencyAndMinRetentionCheckParamRequiredFrequencyUnit:
     Fn::Not:
     - Fn::Equals:

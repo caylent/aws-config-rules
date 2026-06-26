@@ -132,7 +132,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: MULTI_REGION_CLOUD_TRAIL_ENABLED
     Type: AWS::Config::ConfigRule
-  OpensearchAuditLoggingEnabled:
+  OpensearchAuditLoggingEnabled
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: opensearch-audit-logging-enabled
       Scope:
@@ -142,7 +143,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: OPENSEARCH_AUDIT_LOGGING_ENABLED
     Type: AWS::Config::ConfigRule
-  OpensearchLogsToCloudwatch:
+  OpensearchLogsToCloudwatch
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: opensearch-logs-to-cloudwatch
       Scope:
@@ -162,7 +164,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: RDS_LOGGING_ENABLED
     Type: AWS::Config::ConfigRule
-  RedshiftAuditLoggingEnabled:
+  RedshiftAuditLoggingEnabled
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: redshift-audit-logging-enabled
       Scope:
@@ -218,6 +221,10 @@ Resources:
         SourceIdentifier: WAFV2_LOGGING_ENABLED
     Type: AWS::Config::ConfigRule
 Conditions:
+  CommercialPartition:
+    Fn::Equals:
+      - Ref: AWS::Partition
+      - aws
   redshiftClusterConfigurationCheckParamClusterDbEncrypted:
     Fn::Not:
     - Fn::Equals:

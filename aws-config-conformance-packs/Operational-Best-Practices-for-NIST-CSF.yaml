@@ -564,7 +564,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: ELB_TLS_HTTPS_LISTENERS_ONLY
     Type: AWS::Config::ConfigRule
-  Elbv2AcmCertificateRequired:
+  Elbv2AcmCertificateRequired
+    Condition: CommercialPartition:
     Condition: CommercialPartition
     Properties:
       ConfigRuleName: elbv2-acm-certificate-required
@@ -831,7 +832,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: NO_UNRESTRICTED_ROUTE_TO_IGW
     Type: AWS::Config::ConfigRule
-  OpensearchEncryptedAtRest:
+  OpensearchEncryptedAtRest
+    Condition: CommercialPartition:
     Condition: CommercialPartition
     Properties:
       ConfigRuleName: opensearch-encrypted-at-rest
@@ -842,7 +844,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: OPENSEARCH_ENCRYPTED_AT_REST
     Type: AWS::Config::ConfigRule
-  OpensearchInVpcOnly:
+  OpensearchInVpcOnly
+    Condition: CommercialPartition:
     Condition: CommercialPartition
     Properties:
       ConfigRuleName: opensearch-in-vpc-only
@@ -853,7 +856,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: OPENSEARCH_IN_VPC_ONLY
     Type: AWS::Config::ConfigRule
-  OpensearchLogsToCloudwatch:
+  OpensearchLogsToCloudwatch
+    Condition: CommercialPartition:
     Condition: CommercialPartition
     Properties:
       ConfigRuleName: opensearch-logs-to-cloudwatch
@@ -864,7 +868,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: OPENSEARCH_LOGS_TO_CLOUDWATCH
     Type: AWS::Config::ConfigRule
-  OpensearchNodeToNodeEncryptionCheck:
+  OpensearchNodeToNodeEncryptionCheck
+    Condition: CommercialPartition:
     Condition: CommercialPartition
     Properties:
       ConfigRuleName: opensearch-node-to-node-encryption-check
@@ -1109,7 +1114,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: RESTRICTED_INCOMING_TRAFFIC
     Type: AWS::Config::ConfigRule
-  RootAccountHardwareMfaEnabled:
+  RootAccountHardwareMfaEnabled
+    Condition: CommercialPartition:
     Condition: CommercialPartition
     Properties:
       ConfigRuleName: root-account-hardware-mfa-enabled
@@ -1117,7 +1123,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: ROOT_ACCOUNT_HARDWARE_MFA_ENABLED
     Type: AWS::Config::ConfigRule
-  RootAccountMfaEnabled:
+  RootAccountMfaEnabled
+    Condition: CommercialPartition:
     Condition: CommercialPartition
     Properties:
       ConfigRuleName: root-account-mfa-enabled
@@ -1351,7 +1358,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: WAFV2_LOGGING_ENABLED
     Type: AWS::Config::ConfigRule
-  SecurityAwarenessProgramExists:
+  SecurityAwarenessProgramExists
+    Condition: CommercialPartition:
     Condition: CommercialPartition
     Properties:
       ConfigRuleName: security-awareness-program-exists
@@ -1361,6 +1369,10 @@ Resources:
         SourceIdentifier: AWS_CONFIG_PROCESS_CHECK
     Type: AWS::Config::ConfigRule
 Conditions:
+  CommercialPartition:
+    Fn::Equals:
+      - Ref: AWS::Partition
+      - aws
   CommercialPartition:
     Fn::Equals:
       - Ref: AWS::Partition

@@ -8,7 +8,8 @@
 ##################################################################################
 
 Parameters:
-  CodepipelineRegionFanoutCheckParamRegionFanoutFactor:
+  CodepipelineRegionFanoutCheck
+    Condition: CommercialPartitionParamRegionFanoutFactor:
     Default: '3'
     Type: String
 Resources:
@@ -42,7 +43,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: CLOUDFORMATION_STACK_NOTIFICATION_CHECK
     Type: AWS::Config::ConfigRule
-  CodebuildProjectArtifactEncryption:
+  CodebuildProjectArtifactEncryption
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: codebuild-project-artifact-encryption
       Scope:
@@ -102,7 +104,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: CODEBUILD_PROJECT_SOURCE_REPO_URL_CHECK
     Type: AWS::Config::ConfigRule
-  CodedeployAutoRollbackMonitorEnabled:
+  CodedeployAutoRollbackMonitorEnabled
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: codedeploy-auto-rollback-monitor-enabled
       Scope:
@@ -112,7 +115,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: CODEDEPLOY_AUTO_ROLLBACK_MONITOR_ENABLED
     Type: AWS::Config::ConfigRule
-  CodedeployEc2MinimumHealthyHostsConfigured:
+  CodedeployEc2MinimumHealthyHostsConfigured
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: codedeploy-ec2-minimum-healthy-hosts-configured
       Scope:
@@ -122,7 +126,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: CODEDEPLOY_EC2_MINIMUM_HEALTHY_HOSTS_CONFIGURED
     Type: AWS::Config::ConfigRule
-  CodedeployLambdaAllatonceTrafficShiftDisabled:
+  CodedeployLambdaAllatonceTrafficShiftDisabled
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: codedeploy-lambda-allatonce-traffic-shift-disabled
       Scope:
@@ -132,7 +137,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: CODEDEPLOY_LAMBDA_ALLATONCE_TRAFFIC_SHIFT_DISABLED
     Type: AWS::Config::ConfigRule
-  CodepipelineDeploymentCountCheck:
+  CodepipelineDeploymentCountCheck
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: codepipeline-deployment-count-check
       Scope:
@@ -142,14 +148,16 @@ Resources:
         Owner: AWS
         SourceIdentifier: CODEPIPELINE_DEPLOYMENT_COUNT_CHECK
     Type: AWS::Config::ConfigRule
-  CodepipelineRegionFanoutCheck:
+  CodepipelineRegionFanoutCheck
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: codepipeline-region-fanout-check
       InputParameters:
         regionFanoutFactor:
           Fn::If:
           - codepipelineRegionFanoutCheckParamRegionFanoutFactor
-          - Ref: CodepipelineRegionFanoutCheckParamRegionFanoutFactor
+          - Ref: CodepipelineRegionFanoutCheck
+    Condition: CommercialPartitionParamRegionFanoutFactor
           - Ref: AWS::NoValue
       Scope:
         ComplianceResourceTypes:
@@ -228,7 +236,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: ECS_FARGATE_LATEST_PLATFORM_VERSION
     Type: AWS::Config::ConfigRule
-  EcsTaskDefinitionMemoryHardLimit:
+  EcsTaskDefinitionMemoryHardLimit
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: ecs-task-definition-memory-hard-limit
       Scope:
@@ -238,7 +247,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: ECS_TASK_DEFINITION_MEMORY_HARD_LIMIT
     Type: AWS::Config::ConfigRule
-  EcsTaskDefinitionNonrootUser:
+  EcsTaskDefinitionNonrootUser
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: ecs-task-definition-nonroot-user
       Scope:
@@ -248,7 +258,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: ECS_TASK_DEFINITION_NONROOT_USER
     Type: AWS::Config::ConfigRule
-  EcsTaskDefinitionPidModeCheck:
+  EcsTaskDefinitionPidModeCheck
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: ecs-task-definition-pid-mode-check
       Scope:
@@ -293,8 +304,13 @@ Resources:
         SourceIdentifier: ELASTIC_BEANSTALK_MANAGED_UPDATES_ENABLED
     Type: AWS::Config::ConfigRule
 Conditions:
+  CommercialPartition:
+    Fn::Equals:
+      - Ref: AWS::Partition
+      - aws
   codepipelineRegionFanoutCheckParamRegionFanoutFactor:
     Fn::Not:
     - Fn::Equals:
       - ''
-      - Ref: CodepipelineRegionFanoutCheckParamRegionFanoutFactor
+      - Ref: CodepipelineRegionFanoutCheck
+    Condition: CommercialPartitionParamRegionFanoutFactor
