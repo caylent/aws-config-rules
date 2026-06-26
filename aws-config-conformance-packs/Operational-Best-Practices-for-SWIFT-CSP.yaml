@@ -286,7 +286,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: EC2_INSTANCE_PROFILE_ATTACHED
     Type: AWS::Config::ConfigRule
-  Ec2NoAmazonKeyPair:
+  Ec2NoAmazonKeyPair
+    Condition: CommercialPartition:
     Controls:
     - '1.1'
     Properties:
@@ -312,7 +313,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: EC2_STOPPED_INSTANCE
     Type: AWS::Config::ConfigRule
-  Ec2TokenHopLimitCheck:
+  Ec2TokenHopLimitCheck
+    Condition: CommercialPartition:
     Controls:
     - '2.3'
     Properties:
@@ -769,7 +771,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: RESTRICTED_INCOMING_TRAFFIC
     Type: AWS::Config::ConfigRule
-  RootAccountHardwareMfaEnabled:
+  RootAccountHardwareMfaEnabled
+    Condition: CommercialPartition:
     Controls:
     - '4.2'
     Properties:
@@ -780,7 +783,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: ROOT_ACCOUNT_HARDWARE_MFA_ENABLED
     Type: AWS::Config::ConfigRule
-  RootAccountMfaEnabled:
+  RootAccountMfaEnabled
+    Condition: CommercialPartition:
     Controls:
     - '4.2'
     Properties:
@@ -1029,7 +1033,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: SNS_ENCRYPTED_KMS
     Type: AWS::Config::ConfigRule
-  SnsTopicMessageDeliveryNotificationEnabled:
+  SnsTopicMessageDeliveryNotificationEnabled
+    Condition: CommercialPartition:
     Controls:
     - '1.2'
     Properties:
@@ -1120,6 +1125,10 @@ Resources:
         SourceIdentifier: VPC_SG_OPEN_ONLY_TO_AUTHORIZED_PORTS
     Type: AWS::Config::ConfigRule
 Conditions:
+  CommercialPartition:
+    Fn::Equals:
+      - Ref: AWS::Partition
+      - aws
   accessKeysRotatedParamMaxAccessKeyAge:
     Fn::Not:
     - Fn::Equals:

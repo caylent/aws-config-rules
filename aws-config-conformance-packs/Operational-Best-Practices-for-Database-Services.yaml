@@ -228,7 +228,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: RDS_STORAGE_ENCRYPTED
     Type: AWS::Config::ConfigRule
-  RedshiftAuditLoggingEnabled:
+  RedshiftAuditLoggingEnabled
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: redshift-audit-logging-enabled
       Scope:
@@ -307,7 +308,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: REDSHIFT_DEFAULT_ADMIN_CHECK
     Type: AWS::Config::ConfigRule
-  RedshiftDefaultDbNameCheck:
+  RedshiftDefaultDbNameCheck
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: redshift-default-db-name-check
       Scope:
@@ -338,6 +340,10 @@ Resources:
         SourceIdentifier: REDSHIFT_REQUIRE_TLS_SSL
     Type: AWS::Config::ConfigRule
 Conditions:
+  CommercialPartition:
+    Fn::Equals:
+      - Ref: AWS::Partition
+      - aws
   dynamodbThroughputLimitCheckParamAccountRCUThresholdPercentage:
     Fn::Not:
     - Fn::Equals:

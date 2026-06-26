@@ -6,7 +6,8 @@
 ##################################################################################
 
 Resources:
-  CloudfrontAccesslogsEnabled:
+  CloudfrontAccesslogsEnabled
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: cloudfront-accesslogs-enabled
       Scope:
@@ -16,7 +17,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: CLOUDFRONT_ACCESSLOGS_ENABLED
     Type: AWS::Config::ConfigRule
-  CloudfrontAssociatedWithWaf:
+  CloudfrontAssociatedWithWaf
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: cloudfront-associated-with-waf
       Scope:
@@ -26,7 +28,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: CLOUDFRONT_ASSOCIATED_WITH_WAF
     Type: AWS::Config::ConfigRule
-  CloudfrontCustomSslCertificate:
+  CloudfrontCustomSslCertificate
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: cloudfront-custom-ssl-certificate
       Scope:
@@ -36,7 +39,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: CLOUDFRONT_CUSTOM_SSL_CERTIFICATE
     Type: AWS::Config::ConfigRule
-  CloudfrontDefaultRootObjectConfigured:
+  CloudfrontDefaultRootObjectConfigured
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: cloudfront-default-root-object-configured
       Scope:
@@ -46,7 +50,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: CLOUDFRONT_DEFAULT_ROOT_OBJECT_CONFIGURED
     Type: AWS::Config::ConfigRule
-  CloudfrontNoDeprecatedSslProtocols:
+  CloudfrontNoDeprecatedSslProtocols
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: cloudfront-no-deprecated-ssl-protocols
       Scope:
@@ -56,7 +61,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: CLOUDFRONT_NO_DEPRECATED_SSL_PROTOCOLS
     Type: AWS::Config::ConfigRule
-  CloudfrontOriginAccessIdentityEnabled:
+  CloudfrontOriginAccessIdentityEnabled
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: cloudfront-origin-access-identity-enabled
       Scope:
@@ -66,7 +72,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: CLOUDFRONT_ORIGIN_ACCESS_IDENTITY_ENABLED
     Type: AWS::Config::ConfigRule
-  CloudfrontOriginFailoverEnabled:
+  CloudfrontOriginFailoverEnabled
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: cloudfront-origin-failover-enabled
       Scope:
@@ -76,7 +83,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: CLOUDFRONT_ORIGIN_FAILOVER_ENABLED
     Type: AWS::Config::ConfigRule
-  CloudfrontSniEnabled:
+  CloudfrontSniEnabled
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: cloudfront-sni-enabled
       Scope:
@@ -86,7 +94,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: CLOUDFRONT_SNI_ENABLED
     Type: AWS::Config::ConfigRule
-  CloudfrontTrafficToOriginEncrypted:
+  CloudfrontTrafficToOriginEncrypted
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: cloudfront-traffic-to-origin-encrypted
       Scope:
@@ -96,7 +105,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: CLOUDFRONT_TRAFFIC_TO_ORIGIN_ENCRYPTED
     Type: AWS::Config::ConfigRule
-  CloudfrontViewerPolicyHttps:
+  CloudfrontViewerPolicyHttps
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: cloudfront-viewer-policy-https
       Scope:

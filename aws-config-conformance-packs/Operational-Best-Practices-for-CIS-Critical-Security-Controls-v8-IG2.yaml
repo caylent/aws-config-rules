@@ -198,7 +198,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: CLOUDTRAIL_S3_DATAEVENTS_ENABLED
     Type: AWS::Config::ConfigRule
-  CodebuildProjectArtifactEncryption:
+  CodebuildProjectArtifactEncryption
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: codebuild-project-artifact-encryption
       Scope:
@@ -450,7 +451,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: ECS_FARGATE_LATEST_PLATFORM_VERSION
     Type: AWS::Config::ConfigRule
-  EcsTaskDefinitionNonrootUser:
+  EcsTaskDefinitionNonrootUser
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: ecs-task-definition-nonroot-user
       Scope:
@@ -470,7 +472,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: ECS_TASK_DEFINITION_USER_FOR_HOST_MODE_CHECK
     Type: AWS::Config::ConfigRule
-  EfsAccessPointEnforceRootDirectory:
+  EfsAccessPointEnforceRootDirectory
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: efs-access-point-enforce-root-directory
       Scope:
@@ -606,14 +609,16 @@ Resources:
         Owner: AWS
         SourceIdentifier: ELB_TLS_HTTPS_LISTENERS_ONLY
     Type: AWS::Config::ConfigRule
-  Elbv2AcmCertificateRequired:
+  Elbv2AcmCertificateRequired
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: elbv2-acm-certificate-required
       Source:
         Owner: AWS
         SourceIdentifier: ELBV2_ACM_CERTIFICATE_REQUIRED
     Type: AWS::Config::ConfigRule
-  Elbv2MultipleAz:
+  Elbv2MultipleAz
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: elbv2-multiple-az
       Scope:
@@ -886,7 +891,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: NO_UNRESTRICTED_ROUTE_TO_IGW
     Type: AWS::Config::ConfigRule
-  OpensearchEncryptedAtRest:
+  OpensearchEncryptedAtRest
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: opensearch-encrypted-at-rest
       Scope:
@@ -896,7 +902,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: OPENSEARCH_ENCRYPTED_AT_REST
     Type: AWS::Config::ConfigRule
-  OpensearchHttpsRequired:
+  OpensearchHttpsRequired
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: opensearch-https-required
       Scope:
@@ -906,7 +913,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: OPENSEARCH_HTTPS_REQUIRED
     Type: AWS::Config::ConfigRule
-  OpensearchInVpcOnly:
+  OpensearchInVpcOnly
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: opensearch-in-vpc-only
       Scope:
@@ -916,7 +924,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: OPENSEARCH_IN_VPC_ONLY
     Type: AWS::Config::ConfigRule
-  OpensearchNodeToNodeEncryptionCheck:
+  OpensearchNodeToNodeEncryptionCheck
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: opensearch-node-to-node-encryption-check
       Scope:
@@ -1131,14 +1140,16 @@ Resources:
         Owner: AWS
         SourceIdentifier: RESTRICTED_INCOMING_TRAFFIC
     Type: AWS::Config::ConfigRule
-  RootAccountHardwareMfaEnabled:
+  RootAccountHardwareMfaEnabled
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: root-account-hardware-mfa-enabled
       Source:
         Owner: AWS
         SourceIdentifier: ROOT_ACCOUNT_HARDWARE_MFA_ENABLED
     Type: AWS::Config::ConfigRule
-  RootAccountMfaEnabled:
+  RootAccountMfaEnabled
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: root-account-mfa-enabled
       Source:
@@ -1408,7 +1419,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: WAFV2_LOGGING_ENABLED
     Type: AWS::Config::ConfigRule
-  AuditLogPolicyExists:
+  AuditLogPolicyExists
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: audit-log-policy-exists
       Description: Establish and maintain an audit log management policy that defines your organization's logging requirements. This includes, but is not limited to, review and retention of audit logs.
@@ -1417,6 +1429,10 @@ Resources:
         SourceIdentifier: AWS_CONFIG_PROCESS_CHECK
     Type: AWS::Config::ConfigRule
 Conditions:
+  CommercialPartition:
+    Fn::Equals:
+      - Ref: AWS::Partition
+      - aws
   accessKeysRotatedParamMaxAccessKeyAge:
     Fn::Not:
     - Fn::Equals:

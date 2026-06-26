@@ -86,7 +86,8 @@ Resources:
   # AI Services - Fraud Detector & Kendra (5 rules)
   # ============================================
 
-  FraudDetectorEntityTypeTagged:
+  FraudDetectorEntityTypeTagged
+    Condition: CommercialPartition:
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: frauddetector-entity-type-tagged
@@ -94,7 +95,8 @@ Resources:
           Owner: AWS
           SourceIdentifier: FRAUDDETECTOR_ENTITY_TYPE_TAGGED
 
-  FraudDetectorLabelTagged:
+  FraudDetectorLabelTagged
+    Condition: CommercialPartition:
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: frauddetector-label-tagged
@@ -102,7 +104,8 @@ Resources:
           Owner: AWS
           SourceIdentifier: FRAUDDETECTOR_LABEL_TAGGED
 
-  FraudDetectorOutcomeTagged:
+  FraudDetectorOutcomeTagged
+    Condition: CommercialPartition:
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: frauddetector-outcome-tagged
@@ -110,7 +113,8 @@ Resources:
           Owner: AWS
           SourceIdentifier: FRAUDDETECTOR_OUTCOME_TAGGED
 
-  FraudDetectorVariableTagged:
+  FraudDetectorVariableTagged
+    Condition: CommercialPartition:
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: frauddetector-variable-tagged
@@ -118,7 +122,8 @@ Resources:
           Owner: AWS
           SourceIdentifier: FRAUDDETECTOR_VARIABLE_TAGGED
 
-  KendraIndexTagged:
+  KendraIndexTagged
+    Condition: CommercialPartition:
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: kendra-index-tagged
@@ -133,7 +138,8 @@ Resources:
   # OpenSearch Domain - Search & Analytics (10 rules)
   # ============================================
 
-  OpenSearchAccessControl:
+  OpenSearchAccessControl
+    Condition: CommercialPartition:
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: opensearch-access-control-enabled
@@ -141,7 +147,8 @@ Resources:
           Owner: AWS
           SourceIdentifier: OPENSEARCH_ACCESS_CONTROL_ENABLED
 
-  OpenSearchAuditLogging:
+  OpenSearchAuditLogging
+    Condition: CommercialPartition:
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: opensearch-audit-logging-enabled
@@ -149,7 +156,8 @@ Resources:
           Owner: AWS
           SourceIdentifier: OPENSEARCH_AUDIT_LOGGING_ENABLED
 
-  OpenSearchDataNodeFaultTolerance:
+  OpenSearchDataNodeFaultTolerance
+    Condition: CommercialPartition:
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: opensearch-data-node-fault-tolerance
@@ -157,7 +165,8 @@ Resources:
           Owner: AWS
           SourceIdentifier: OPENSEARCH_DATA_NODE_FAULT_TOLERANCE
 
-  OpenSearchEncryptedAtRest:
+  OpenSearchEncryptedAtRest
+    Condition: CommercialPartition:
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: opensearch-encrypted-at-rest
@@ -165,7 +174,8 @@ Resources:
           Owner: AWS
           SourceIdentifier: OPENSEARCH_ENCRYPTED_AT_REST
 
-  OpenSearchHTTPSRequired:
+  OpenSearchHTTPSRequired
+    Condition: CommercialPartition:
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: opensearch-https-required
@@ -173,7 +183,8 @@ Resources:
           Owner: AWS
           SourceIdentifier: OPENSEARCH_HTTPS_REQUIRED
 
-  OpenSearchInVPCOnly:
+  OpenSearchInVPCOnly
+    Condition: CommercialPartition:
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: opensearch-in-vpc-only
@@ -181,7 +192,8 @@ Resources:
           Owner: AWS
           SourceIdentifier: OPENSEARCH_IN_VPC_ONLY
 
-  OpenSearchLogsToCloudWatch:
+  OpenSearchLogsToCloudWatch
+    Condition: CommercialPartition:
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: opensearch-logs-to-cloudwatch
@@ -189,7 +201,8 @@ Resources:
           Owner: AWS
           SourceIdentifier: OPENSEARCH_LOGS_TO_CLOUDWATCH
 
-  OpenSearchNodeToNodeEncryption:
+  OpenSearchNodeToNodeEncryption
+    Condition: CommercialPartition:
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: opensearch-node-to-node-encryption-check
@@ -217,7 +230,8 @@ Resources:
   # OpenSearch Serverless - Vector Search for RAG (1 rule)
   # ============================================
 
-  OpenSearchServerlessStandbyReplicasEnabled:
+  OpenSearchServerlessStandbyReplicasEnabled
+    Condition: CommercialPartition:
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: opensearchserverless-collection-standbyreplicas-enabled
@@ -277,7 +291,8 @@ Resources:
           Owner: AWS
           SourceIdentifier: EC2_EBS_ENCRYPTION_BY_DEFAULT
 
-  EC2LaunchTemplateIMDSv2:
+  EC2LaunchTemplateIMDSv2
+    Condition: CommercialPartition:
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: ec2-launch-template-imdsv2-check
@@ -285,7 +300,8 @@ Resources:
           Owner: AWS
           SourceIdentifier: EC2_LAUNCH_TEMPLATE_IMDSV2_CHECK
 
-  EC2LaunchTemplatePublicIPDisabled:
+  EC2LaunchTemplatePublicIPDisabled
+    Condition: CommercialPartition:
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: ec2-launch-template-public-ip-disabled
@@ -293,7 +309,8 @@ Resources:
           Owner: AWS
           SourceIdentifier: EC2_LAUNCH_TEMPLATE_PUBLIC_IP_DISABLED
 
-  EC2LaunchTemplateTagged:
+  EC2LaunchTemplateTagged
+    Condition: CommercialPartition:
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: ec2-launch-template-tagged
@@ -309,7 +326,8 @@ Resources:
           Owner: AWS
           SourceIdentifier: EC2_MANAGEDINSTANCE_PATCH_COMPLIANCE_STATUS_CHECK
 
-  EC2TokenHopLimitCheck:
+  EC2TokenHopLimitCheck
+    Condition: CommercialPartition:
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: ec2-token-hop-limit-check
@@ -413,7 +431,8 @@ Resources:
           Owner: AWS
           SourceIdentifier: AUTOSCALING_LAUNCH_CONFIG_PUBLIC_IP_DISABLED
 
-  AutoScalingLaunchTemplate:
+  AutoScalingLaunchTemplate
+    Condition: CommercialPartition:
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: autoscaling-launch-template
@@ -429,7 +448,8 @@ Resources:
           Owner: AWS
           SourceIdentifier: AUTOSCALING_MULTIPLE_INSTANCE_TYPES
 
-  AutoScalingCapacityRebalancing:
+  AutoScalingCapacityRebalancing
+    Condition: CommercialPartition:
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: autoscaling-capacity-rebalancing
@@ -437,7 +457,8 @@ Resources:
           Owner: AWS
           SourceIdentifier: AUTOSCALING_CAPACITY_REBALANCING
 
-  AutoScalingLaunchConfigHopLimit:
+  AutoScalingLaunchConfigHopLimit
+    Condition: CommercialPartition:
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: autoscaling-launch-config-hop-limit
@@ -445,7 +466,8 @@ Resources:
           Owner: AWS
           SourceIdentifier: AUTOSCALING_LAUNCH_CONFIG_HOP_LIMIT
 
-  EC2CapacityReservationTagged:
+  EC2CapacityReservationTagged
+    Condition: CommercialPartition:
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: ec2-capacity-reservation-tagged
@@ -453,7 +475,8 @@ Resources:
           Owner: AWS
           SourceIdentifier: EC2_CAPACITY_RESERVATION_TAGGED
 
-  EC2FleetTagged:
+  EC2FleetTagged
+    Condition: CommercialPartition:
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: ec2-fleet-tagged
@@ -469,7 +492,8 @@ Resources:
           Owner: AWS
           SourceIdentifier: EC2_INSTANCE_MULTIPLE_ENI_CHECK
 
-  EC2NoAmazonKeyPair:
+  EC2NoAmazonKeyPair
+    Condition: CommercialPartition:
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: ec2-no-amazon-key-pair
@@ -477,7 +501,8 @@ Resources:
           Owner: AWS
           SourceIdentifier: EC2_NO_AMAZON_KEY_PAIR
 
-  EC2ParavirtualInstanceCheck:
+  EC2ParavirtualInstanceCheck
+    Condition: CommercialPartition:
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: ec2-paravirtual-instance-check
@@ -485,7 +510,8 @@ Resources:
           Owner: AWS
           SourceIdentifier: EC2_PARAVIRTUAL_INSTANCE_CHECK
 
-  EC2PrefixListTagged:
+  EC2PrefixListTagged
+    Condition: CommercialPartition:
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: ec2-prefix-list-tagged
@@ -493,7 +519,8 @@ Resources:
           Owner: AWS
           SourceIdentifier: EC2_PREFIX_LIST_TAGGED
 
-  EC2DHCPOptionsTagged:
+  EC2DHCPOptionsTagged
+    Condition: CommercialPartition:
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: ec2-dhcp-options-tagged
@@ -597,7 +624,8 @@ Resources:
           desyncMode:
             Ref: AlbDesyncMode
 
-  ALBListenerTagged:
+  ALBListenerTagged
+    Condition: CommercialPartition:
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: alb-listener-tagged
@@ -605,7 +633,8 @@ Resources:
           Owner: AWS
           SourceIdentifier: ALB_LISTENER_TAGGED
 
-  ALBTagged:
+  ALBTagged
+    Condition: CommercialPartition:
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: alb-tagged
@@ -613,7 +642,8 @@ Resources:
           Owner: AWS
           SourceIdentifier: ALB_TAGGED
 
-  NLBCrossZoneLoadBalancing:
+  NLBCrossZoneLoadBalancing
+    Condition: CommercialPartition:
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: nlb-cross-zone-load-balancing-enabled
@@ -629,7 +659,8 @@ Resources:
           Owner: AWS
           SourceIdentifier: NLB_LOGGING_ENABLED
 
-  NLBListenerTagged:
+  NLBListenerTagged
+    Condition: CommercialPartition:
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: nlb-listener-tagged
@@ -637,7 +668,8 @@ Resources:
           Owner: AWS
           SourceIdentifier: NLB_LISTENER_TAGGED
 
-  NLBTagged:
+  NLBTagged
+    Condition: CommercialPartition:
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: nlb-tagged
@@ -645,7 +677,8 @@ Resources:
           Owner: AWS
           SourceIdentifier: NLB_TAGGED
 
-  ELBv2ACMCertificateRequired:
+  ELBv2ACMCertificateRequired
+    Condition: CommercialPartition:
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: elbv2-acm-certificate-required
@@ -669,7 +702,8 @@ Resources:
           Owner: AWS
           SourceIdentifier: ELB_LOGGING_ENABLED
 
-  ELBv2MultipleAZ:
+  ELBv2MultipleAZ
+    Condition: CommercialPartition:
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: elbv2-multiple-az
@@ -740,7 +774,8 @@ Resources:
           endpointConfigurationTypes:
             Ref: ApiGwEndpointConfigurationTypes
 
-  APIGWRestAPITagged:
+  APIGWRestAPITagged
+    Condition: CommercialPartition:
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: api-gw-rest-api-tagged
@@ -748,7 +783,8 @@ Resources:
           Owner: AWS
           SourceIdentifier: API_GW_REST_API_TAGGED
 
-  APIGWStageTagged:
+  APIGWStageTagged
+    Condition: CommercialPartition:
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: api-gw-stage-tagged
@@ -756,7 +792,8 @@ Resources:
           Owner: AWS
           SourceIdentifier: API_GW_STAGE_TAGGED
 
-  APIGWv2AccessLogsEnabled:
+  APIGWv2AccessLogsEnabled
+    Condition: CommercialPartition:
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: api-gwv2-access-logs-enabled
@@ -764,7 +801,8 @@ Resources:
           Owner: AWS
           SourceIdentifier: API_GWV2_ACCESS_LOGS_ENABLED
 
-  APIGWv2AuthorizationTypeConfigured:
+  APIGWv2AuthorizationTypeConfigured
+    Condition: CommercialPartition:
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: api-gwv2-authorization-type-configured
@@ -808,7 +846,8 @@ Resources:
           Owner: AWS
           SourceIdentifier: ECR_PRIVATE_LIFECYCLE_POLICY_CONFIGURED
 
-  ECRRepositoryTagged:
+  ECRRepositoryTagged
+    Condition: CommercialPartition:
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: ecr-repository-tagged
@@ -1015,7 +1054,8 @@ Resources:
           Owner: AWS
           SourceIdentifier: ECS_FARGATE_LATEST_PLATFORM_VERSION
 
-  ECSNoEnvironmentSecrets:
+  ECSNoEnvironmentSecrets
+    Condition: CommercialPartition:
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: ecs-no-environment-secrets
@@ -1026,7 +1066,8 @@ Resources:
           secretKeys:
             Ref: EcsSecretKeys
 
-  ECSTaskDefinitionNonrootUser:
+  ECSTaskDefinitionNonrootUser
+    Condition: CommercialPartition:
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: ecs-task-definition-nonroot-user
@@ -1034,7 +1075,8 @@ Resources:
           Owner: AWS
           SourceIdentifier: ECS_TASK_DEFINITION_NONROOT_USER
 
-  ECSTaskDefinitionPIDModeCheck:
+  ECSTaskDefinitionPIDModeCheck
+    Condition: CommercialPartition:
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: ecs-task-definition-pid-mode-check
@@ -1070,7 +1112,8 @@ Resources:
           Owner: AWS
           SourceIdentifier: EFS_IN_BACKUP_PLAN
 
-  EFSAccessPointEnforceRootDirectory:
+  EFSAccessPointEnforceRootDirectory
+    Condition: CommercialPartition:
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: efs-access-point-enforce-root-directory

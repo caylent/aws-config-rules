@@ -83,7 +83,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: CLOUDWATCH_ALARM_ACTION_CHECK
     Type: AWS::Config::ConfigRule
-  CloudwatchAlarmActionEnabledCheck:
+  CloudwatchAlarmActionEnabledCheck
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: cloudwatch-alarm-action-enabled-check
       Scope:
@@ -93,7 +94,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: CLOUDWATCH_ALARM_ACTION_ENABLED_CHECK
     Type: AWS::Config::ConfigRule
-  CodedeployAutoRollbackMonitorEnabled:
+  CodedeployAutoRollbackMonitorEnabled
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: codedeploy-auto-rollback-monitor-enabled
       Scope:
@@ -103,7 +105,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: CODEDEPLOY_AUTO_ROLLBACK_MONITOR_ENABLED
     Type: AWS::Config::ConfigRule
-  CodedeployEc2MinimumHealthyHostsConfigured:
+  CodedeployEc2MinimumHealthyHostsConfigured
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: codedeploy-ec2-minimum-healthy-hosts-configured
       Scope:
@@ -240,6 +243,10 @@ Resources:
         SourceIdentifier: SECURITYHUB_ENABLED
     Type: AWS::Config::ConfigRule
 Conditions:
+  CommercialPartition:
+    Fn::Equals:
+      - Ref: AWS::Partition
+      - aws
   dynamodbThroughputLimitCheckParamAccountRCUThresholdPercentage:
     Fn::Not:
     - Fn::Equals:

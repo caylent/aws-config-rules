@@ -279,7 +279,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: BEANSTALK_ENHANCED_HEALTH_REPORTING_ENABLED
     Type: AWS::Config::ConfigRule
-  ClbMultipleAz:
+  ClbMultipleAz
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: clb-multiple-az
       Scope:
@@ -520,7 +521,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: ECR_PRIVATE_TAG_IMMUTABILITY_ENABLED
     Type: AWS::Config::ConfigRule
-  EcsTaskDefinitionNonrootUser:
+  EcsTaskDefinitionNonrootUser
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: ecs-task-definition-nonroot-user
       Scope:
@@ -530,7 +532,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: ECS_TASK_DEFINITION_NONROOT_USER
     Type: AWS::Config::ConfigRule
-  EfsAccessPointEnforceRootDirectory:
+  EfsAccessPointEnforceRootDirectory
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: efs-access-point-enforce-root-directory
       Scope:
@@ -642,14 +645,16 @@ Resources:
         Owner: AWS
         SourceIdentifier: ELB_TLS_HTTPS_LISTENERS_ONLY
     Type: AWS::Config::ConfigRule
-  Elbv2AcmCertificateRequired:
+  Elbv2AcmCertificateRequired
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: elbv2-acm-certificate-required
       Source:
         Owner: AWS
         SourceIdentifier: ELBV2_ACM_CERTIFICATE_REQUIRED
     Type: AWS::Config::ConfigRule
-  Elbv2MultipleAz:
+  Elbv2MultipleAz
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: elbv2-multiple-az
       Scope:
@@ -933,7 +938,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: LAMBDA_INSIDE_VPC
     Type: AWS::Config::ConfigRule
-  LambdaVpcMultiAzCheck:
+  LambdaVpcMultiAzCheck
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: lambda-vpc-multi-az-check
       Scope:
@@ -957,7 +963,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: MULTI_REGION_CLOUD_TRAIL_ENABLED
     Type: AWS::Config::ConfigRule
-  OpensearchHttpsRequired:
+  OpensearchHttpsRequired
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: opensearch-https-required
       Scope:
@@ -967,7 +974,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: OPENSEARCH_HTTPS_REQUIRED
     Type: AWS::Config::ConfigRule
-  OpensearchInVpcOnly:
+  OpensearchInVpcOnly
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: opensearch-in-vpc-only
       Scope:
@@ -977,7 +985,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: OPENSEARCH_IN_VPC_ONLY
     Type: AWS::Config::ConfigRule
-  OpensearchLogsToCloudwatch:
+  OpensearchLogsToCloudwatch
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: opensearch-logs-to-cloudwatch
       Scope:
@@ -1075,7 +1084,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: RDS_SNAPSHOTS_PUBLIC_PROHIBITED
     Type: AWS::Config::ConfigRule
-  RedshiftAuditLoggingEnabled:
+  RedshiftAuditLoggingEnabled
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: redshift-audit-logging-enabled
       Scope:
@@ -1180,14 +1190,16 @@ Resources:
         Owner: AWS
         SourceIdentifier: RESTRICTED_INCOMING_TRAFFIC
     Type: AWS::Config::ConfigRule
-  RootAccountHardwareMfaEnabled:
+  RootAccountHardwareMfaEnabled
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: root-account-hardware-mfa-enabled
       Source:
         Owner: AWS
         SourceIdentifier: ROOT_ACCOUNT_HARDWARE_MFA_ENABLED
     Type: AWS::Config::ConfigRule
-  RootAccountMfaEnabled:
+  RootAccountMfaEnabled
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: root-account-mfa-enabled
       Source:
@@ -1424,6 +1436,10 @@ Resources:
         SourceIdentifier: WAFV2_LOGGING_ENABLED
     Type: AWS::Config::ConfigRule
 Conditions:
+  CommercialPartition:
+    Fn::Equals:
+      - Ref: AWS::Partition
+      - aws
   accessKeysRotatedParamMaxAccessKeyAge:
     Fn::Not:
     - Fn::Equals:

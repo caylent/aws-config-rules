@@ -7,7 +7,8 @@
 ##################################################################################
 
 Resources:
-  EfsAccessPointEnforceRootDirectory:
+  EfsAccessPointEnforceRootDirectory
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: efs-access-point-enforce-root-directory
       Scope:

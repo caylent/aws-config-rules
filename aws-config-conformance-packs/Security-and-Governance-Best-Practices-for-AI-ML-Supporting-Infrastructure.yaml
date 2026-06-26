@@ -93,7 +93,8 @@ Resources:
           okActionRequired:
             Ref: OkActionRequired
 
-  CloudWatchAlarmDescription:
+  CloudWatchAlarmDescription
+    Condition: CommercialPartition:
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: cloudwatch-alarm-description
@@ -109,7 +110,8 @@ Resources:
           Owner: AWS
           SourceIdentifier: CW_LOGGROUP_RETENTION_PERIOD_CHECK
 
-  CloudWatchMetricStreamTagged:
+  CloudWatchMetricStreamTagged
+    Condition: CommercialPartition:
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: cloudwatch-metric-stream-tagged
@@ -137,7 +139,8 @@ Resources:
           Owner: AWS
           SourceIdentifier: IAM_POLICY_NO_STATEMENTS_WITH_ADMIN_ACCESS
 
-  IAMPolicyDescription:
+  IAMPolicyDescription
+    Condition: CommercialPartition:
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: iam-policy-description
@@ -237,7 +240,8 @@ Resources:
           Owner: AWS
           SourceIdentifier: CLOUD_TRAIL_LOG_FILE_VALIDATION_ENABLED
 
-  CloudTrailEventDataStoreMultiRegion:
+  CloudTrailEventDataStoreMultiRegion
+    Condition: CommercialPartition:
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: cloudtrail-event-data-store-multi-region
@@ -257,7 +261,8 @@ Resources:
           Owner: AWS
           SourceIdentifier: LAMBDA_INSIDE_VPC
 
-  LambdaFunctionLogFormatJson:
+  LambdaFunctionLogFormatJson
+    Condition: CommercialPartition:
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: lambda-function-log-format-json
@@ -265,7 +270,8 @@ Resources:
           Owner: AWS
           SourceIdentifier: LAMBDA_FUNCTION_LOG_FORMAT_JSON
 
-  LambdaFunctionApplicationLogLevelCheck:
+  LambdaFunctionApplicationLogLevelCheck
+    Condition: CommercialPartition:
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: lambda-function-application-log-level-check
@@ -276,7 +282,8 @@ Resources:
           logLevel:
             Ref: LambdaApplicationLogLevel
 
-  LambdaFunctionSystemLogLevelCheck:
+  LambdaFunctionSystemLogLevelCheck
+    Condition: CommercialPartition:
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: lambda-function-system-log-level-check
@@ -299,7 +306,8 @@ Resources:
           Owner: AWS
           SourceIdentifier: WAFV2_LOGGING_ENABLED
 
-  WAFv2RuleGroupLogging:
+  WAFv2RuleGroupLogging
+    Condition: CommercialPartition:
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: wafv2-rulegroup-logging-enabled
@@ -307,7 +315,8 @@ Resources:
           Owner: AWS
           SourceIdentifier: WAFV2_RULEGROUP_LOGGING_ENABLED
 
-  WAFv2RuleGroupNotEmpty:
+  WAFv2RuleGroupNotEmpty
+    Condition: CommercialPartition:
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: wafv2-rulegroup-not-empty
@@ -315,7 +324,8 @@ Resources:
           Owner: AWS
           SourceIdentifier: WAFV2_RULEGROUP_NOT_EMPTY
 
-  WAFv2WebACLNotEmpty:
+  WAFv2WebACLNotEmpty
+    Condition: CommercialPartition:
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: wafv2-webacl-not-empty
@@ -339,7 +349,8 @@ Resources:
           Owner: AWS
           SourceIdentifier: API_GW_ASSOCIATED_WITH_WAF
 
-  CloudFrontWAFv2:
+  CloudFrontWAFv2
+    Condition: CommercialPartition:
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: cloudfront-associated-with-waf-wafv2
@@ -347,7 +358,8 @@ Resources:
           Owner: AWS
           SourceIdentifier: CLOUDFRONT_ASSOCIATED_WITH_WAF
 
-  AppSyncWAFv2:
+  AppSyncWAFv2
+    Condition: CommercialPartition:
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: appsync-associated-with-waf
@@ -359,7 +371,8 @@ Resources:
   # Cognito - User Authentication (8 rules)
   # ============================================
 
-  CognitoIdentityPoolUnauthLogins:
+  CognitoIdentityPoolUnauthLogins
+    Condition: CommercialPartition:
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: cognito-identity-pool-unauthenticated-logins
@@ -367,7 +380,8 @@ Resources:
           Owner: AWS
           SourceIdentifier: COGNITO_IDENTITY_POOL_UNAUTHENTICATED_LOGINS
 
-  CognitoIdentityPoolUnauthAccess:
+  CognitoIdentityPoolUnauthAccess
+    Condition: CommercialPartition:
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: cognito-identity-pool-unauth-access-check
@@ -375,7 +389,8 @@ Resources:
           Owner: AWS
           SourceIdentifier: COGNITO_IDENTITY_POOL_UNAUTH_ACCESS_CHECK
 
-  CognitoUserPoolCustomAuthThreat:
+  CognitoUserPoolCustomAuthThreat
+    Condition: CommercialPartition:
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: cognito-userpool-cust-auth-threat-full-check
@@ -383,7 +398,8 @@ Resources:
           Owner: AWS
           SourceIdentifier: COGNITO_USERPOOL_CUST_AUTH_THREAT_FULL_CHECK
 
-  CognitoUserPoolAdvancedSecurity:
+  CognitoUserPoolAdvancedSecurity
+    Condition: CommercialPartition:
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: cognito-user-pool-advanced-security-enabled
@@ -391,7 +407,8 @@ Resources:
           Owner: AWS
           SourceIdentifier: COGNITO_USER_POOL_ADVANCED_SECURITY_ENABLED
 
-  CognitoUserPoolDeletionProtection:
+  CognitoUserPoolDeletionProtection
+    Condition: CommercialPartition:
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: cognito-user-pool-deletion-protection-enabled
@@ -399,7 +416,8 @@ Resources:
           Owner: AWS
           SourceIdentifier: COGNITO_USER_POOL_DELETION_PROTECTION_ENABLED
 
-  CognitoUserPoolMFAEnabled:
+  CognitoUserPoolMFAEnabled
+    Condition: CommercialPartition:
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: cognito-user-pool-mfa-enabled
@@ -407,7 +425,8 @@ Resources:
           Owner: AWS
           SourceIdentifier: COGNITO_USER_POOL_MFA_ENABLED
 
-  CognitoUserPoolPasswordPolicy:
+  CognitoUserPoolPasswordPolicy
+    Condition: CommercialPartition:
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: cognito-user-pool-password-policy-check
@@ -415,7 +434,8 @@ Resources:
           Owner: AWS
           SourceIdentifier: COGNITO_USER_POOL_PASSWORD_POLICY_CHECK
 
-  CognitoUserPoolTagged:
+  CognitoUserPoolTagged
+    Condition: CommercialPartition:
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: cognito-user-pool-tagged
@@ -427,7 +447,8 @@ Resources:
   # Network Firewall - Network Security (8 rules)
   # ============================================
 
-  NetFWDeletionProtection:
+  NetFWDeletionProtection
+    Condition: CommercialPartition:
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: netfw-deletion-protection-enabled
@@ -435,7 +456,8 @@ Resources:
           Owner: AWS
           SourceIdentifier: NETFW_DELETION_PROTECTION_ENABLED
 
-  NetFWLogging:
+  NetFWLogging
+    Condition: CommercialPartition:
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: netfw-logging-enabled
@@ -443,7 +465,8 @@ Resources:
           Owner: AWS
           SourceIdentifier: NETFW_LOGGING_ENABLED
 
-  NetFWMultiAZ:
+  NetFWMultiAZ
+    Condition: CommercialPartition:
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: netfw-multi-az-enabled
@@ -451,7 +474,8 @@ Resources:
           Owner: AWS
           SourceIdentifier: NETFW_MULTI_AZ_ENABLED
 
-  NetFWPolicyFragments:
+  NetFWPolicyFragments
+    Condition: CommercialPartition:
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: netfw-policy-default-action-fragment-packets
@@ -462,7 +486,8 @@ Resources:
           statelessFragmentDefaultActions:
             Ref: StatelessFragmentDefaultActions
 
-  NetFWPolicyFullPackets:
+  NetFWPolicyFullPackets
+    Condition: CommercialPartition:
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: netfw-policy-default-action-full-packets
@@ -525,7 +550,8 @@ Resources:
           Owner: AWS
           SourceIdentifier: GUARDDUTY_EKS_PROTECTION_AUDIT_ENABLED
 
-  GuardDutyEKSRuntime:
+  GuardDutyEKSRuntime
+    Condition: CommercialPartition:
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: guardduty-eks-protection-runtime-enabled
@@ -541,7 +567,8 @@ Resources:
           Owner: AWS
           SourceIdentifier: GUARDDUTY_LAMBDA_PROTECTION_ENABLED
 
-  GuardDutyMalware:
+  GuardDutyMalware
+    Condition: CommercialPartition:
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: guardduty-malware-protection-enabled
@@ -549,7 +576,8 @@ Resources:
           Owner: AWS
           SourceIdentifier: GUARDDUTY_MALWARE_PROTECTION_ENABLED
 
-  GuardDutyRDS:
+  GuardDutyRDS
+    Condition: CommercialPartition:
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: guardduty-rds-protection-enabled
@@ -557,7 +585,8 @@ Resources:
           Owner: AWS
           SourceIdentifier: GUARDDUTY_RDS_PROTECTION_ENABLED
 
-  GuardDutyEC2Runtime:
+  GuardDutyEC2Runtime
+    Condition: CommercialPartition:
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: guardduty-ec2-protection-runtime-enabled
@@ -565,7 +594,8 @@ Resources:
           Owner: AWS
           SourceIdentifier: GUARDDUTY_EC2_PROTECTION_RUNTIME_ENABLED
 
-  GuardDutyECSRuntime:
+  GuardDutyECSRuntime
+    Condition: CommercialPartition:
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: guardduty-ecs-protection-runtime-enabled
@@ -573,7 +603,8 @@ Resources:
           Owner: AWS
           SourceIdentifier: GUARDDUTY_ECS_PROTECTION_RUNTIME_ENABLED
 
-  GuardDutyRuntimeMonitoring:
+  GuardDutyRuntimeMonitoring
+    Condition: CommercialPartition:
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: guardduty-runtime-monitoring-enabled
@@ -621,7 +652,8 @@ Resources:
           Owner: AWS
           SourceIdentifier: INSPECTOR_ECR_SCAN_ENABLED
 
-  InspectorLambdaCode:
+  InspectorLambdaCode
+    Condition: CommercialPartition:
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: inspector-lambda-code-scan-enabled
@@ -641,7 +673,8 @@ Resources:
   # Macie - Sensitive Data Discovery (2 rules)
   # ============================================
 
-  MacieStatus:
+  MacieStatus
+    Condition: CommercialPartition:
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: macie-status-check
@@ -649,7 +682,8 @@ Resources:
           Owner: AWS
           SourceIdentifier: MACIE_STATUS_CHECK
 
-  MacieAutoDiscovery:
+  MacieAutoDiscovery
+    Condition: CommercialPartition:
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: macie-auto-sensitive-data-discovery-check
@@ -661,7 +695,8 @@ Resources:
   # Access Analyzer - External Access (1 rule)
   # ============================================
 
-  AccessAnalyzerEnabled:
+  AccessAnalyzerEnabled
+    Condition: CommercialPartition:
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: iam-external-access-analyzer-enabled

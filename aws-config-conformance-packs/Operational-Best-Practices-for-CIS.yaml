@@ -74,20 +74,24 @@ Resources:
         Owner: AWS
         SourceIdentifier: IAM_ROOT_ACCESS_KEY_CHECK
       MaximumExecutionFrequency: Twelve_Hours
-  RootAccountMFAEnabled:
+  RootAccountMFAEnabled
+    Condition: CommercialPartition:
     Type: AWS::Config::ConfigRule
     Properties:
       ConfigRuleName: RootAccountMFAEnabled
+    Condition: CommercialPartition
       Description: Checks whether the root user of your AWS account requires multi-factor
         authentication for console sign-in.
       Source:
         Owner: AWS
         SourceIdentifier: ROOT_ACCOUNT_MFA_ENABLED
       MaximumExecutionFrequency: Twelve_Hours
-  RootAccountHardwareMFAEnabled:
+  RootAccountHardwareMFAEnabled
+    Condition: CommercialPartition:
     Type: AWS::Config::ConfigRule
     Properties:
       ConfigRuleName: RootAccountHardwareMFAEnabled
+    Condition: CommercialPartition
       Description: Checks whether your AWS account is enabled to use multi-factor
         authentication (MFA) hardware device to sign in with root credentials.
       Source:

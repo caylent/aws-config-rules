@@ -19,7 +19,8 @@ Parameters:
   AlbDesyncModeCheckParamDesyncMode:
     Default: defensive', 'strictest'
     Type: String
-  EcsNoEnvironmentSecretsParamSecretKeys:
+  EcsNoEnvironmentSecrets
+    Condition: CommercialPartitionParamSecretKeys:
     Default: AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, ECS_ENGINE_AUTH_DATA
     Type: String
   IamCustomerPolicyBlockedKmsActionsParamBlockedActionsPatterns:
@@ -382,7 +383,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: EC2_MANAGEDINSTANCE_PATCH_COMPLIANCE_STATUS_CHECK
     Type: AWS::Config::ConfigRule
-  Ec2SecurityGroupAttachedToEniPeriodic:
+  Ec2SecurityGroupAttachedToEniPeriodic
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: ec2-security-group-attached-to-eni-periodic
       Scope:
@@ -432,14 +434,16 @@ Resources:
         Owner: AWS
         SourceIdentifier: ECS_FARGATE_LATEST_PLATFORM_VERSION
     Type: AWS::Config::ConfigRule
-  EcsNoEnvironmentSecrets:
+  EcsNoEnvironmentSecrets
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: ecs-no-environment-secrets
       InputParameters:
         secretKeys:
           Fn::If:
           - ecsNoEnvironmentSecretsParamSecretKeys
-          - Ref: EcsNoEnvironmentSecretsParamSecretKeys
+          - Ref: EcsNoEnvironmentSecrets
+    Condition: CommercialPartitionParamSecretKeys
           - Ref: AWS::NoValue
       Scope:
         ComplianceResourceTypes:
@@ -448,7 +452,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: ECS_NO_ENVIRONMENT_SECRETS
     Type: AWS::Config::ConfigRule
-  EcsTaskDefinitionNonrootUser:
+  EcsTaskDefinitionNonrootUser
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: ecs-task-definition-nonroot-user
       Scope:
@@ -458,7 +463,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: ECS_TASK_DEFINITION_NONROOT_USER
     Type: AWS::Config::ConfigRule
-  EfsAccessPointEnforceRootDirectory:
+  EfsAccessPointEnforceRootDirectory
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: efs-access-point-enforce-root-directory
       Scope:
@@ -567,7 +573,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: ELB_TLS_HTTPS_LISTENERS_ONLY
     Type: AWS::Config::ConfigRule
-  Elbv2AcmCertificateRequired:
+  Elbv2AcmCertificateRequired
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: elbv2-acm-certificate-required
       Source:
@@ -857,7 +864,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: NO_UNRESTRICTED_ROUTE_TO_IGW
     Type: AWS::Config::ConfigRule
-  OpensearchAccessControlEnabled:
+  OpensearchAccessControlEnabled
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: opensearch-access-control-enabled
       Scope:
@@ -867,7 +875,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: OPENSEARCH_ACCESS_CONTROL_ENABLED
     Type: AWS::Config::ConfigRule
-  OpensearchAuditLoggingEnabled:
+  OpensearchAuditLoggingEnabled
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: opensearch-audit-logging-enabled
       Scope:
@@ -877,7 +886,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: OPENSEARCH_AUDIT_LOGGING_ENABLED
     Type: AWS::Config::ConfigRule
-  OpensearchEncryptedAtRest:
+  OpensearchEncryptedAtRest
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: opensearch-encrypted-at-rest
       Scope:
@@ -887,7 +897,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: OPENSEARCH_ENCRYPTED_AT_REST
     Type: AWS::Config::ConfigRule
-  OpensearchHttpsRequired:
+  OpensearchHttpsRequired
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: opensearch-https-required
       Scope:
@@ -897,7 +908,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: OPENSEARCH_HTTPS_REQUIRED
     Type: AWS::Config::ConfigRule
-  OpensearchInVpcOnly:
+  OpensearchInVpcOnly
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: opensearch-in-vpc-only
       Scope:
@@ -907,7 +919,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: OPENSEARCH_IN_VPC_ONLY
     Type: AWS::Config::ConfigRule
-  OpensearchLogsToCloudwatch:
+  OpensearchLogsToCloudwatch
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: opensearch-logs-to-cloudwatch
       Scope:
@@ -917,7 +930,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: OPENSEARCH_LOGS_TO_CLOUDWATCH
     Type: AWS::Config::ConfigRule
-  OpensearchNodeToNodeEncryptionCheck:
+  OpensearchNodeToNodeEncryptionCheck
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: opensearch-node-to-node-encryption-check
       Scope:
@@ -937,7 +951,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: RDS_AUTOMATIC_MINOR_VERSION_UPGRADE_ENABLED
     Type: AWS::Config::ConfigRule
-  RdsClusterDefaultAdminCheck:
+  RdsClusterDefaultAdminCheck
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: rds-cluster-default-admin-check
       Scope:
@@ -1066,7 +1081,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: REDSHIFT_DEFAULT_ADMIN_CHECK
     Type: AWS::Config::ConfigRule
-  RedshiftDefaultDbNameCheck:
+  RedshiftDefaultDbNameCheck
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: redshift-default-db-name-check
       Scope:
@@ -1122,14 +1138,16 @@ Resources:
         Owner: AWS
         SourceIdentifier: RESTRICTED_INCOMING_TRAFFIC
     Type: AWS::Config::ConfigRule
-  RootAccountHardwareMfaEnabled:
+  RootAccountHardwareMfaEnabled
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: root-account-hardware-mfa-enabled
       Source:
         Owner: AWS
         SourceIdentifier: ROOT_ACCOUNT_HARDWARE_MFA_ENABLED
     Type: AWS::Config::ConfigRule
-  RootAccountMfaEnabled:
+  RootAccountMfaEnabled
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: root-account-mfa-enabled
       Source:
@@ -1386,7 +1404,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: VPC_SG_OPEN_ONLY_TO_AUTHORIZED_PORTS
     Type: AWS::Config::ConfigRule
-  WafRegionalRuleNotEmpty:
+  WafRegionalRuleNotEmpty
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: waf-regional-rule-not-empty
       Scope:
@@ -1396,7 +1415,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: WAF_REGIONAL_RULE_NOT_EMPTY
     Type: AWS::Config::ConfigRule
-  WafRegionalRulegroupNotEmpty:
+  WafRegionalRulegroupNotEmpty
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: waf-regional-rulegroup-not-empty
       Scope:
@@ -1406,7 +1426,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: WAF_REGIONAL_RULEGROUP_NOT_EMPTY
     Type: AWS::Config::ConfigRule
-  WafRegionalWebaclNotEmpty:
+  WafRegionalWebaclNotEmpty
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: waf-regional-webacl-not-empty
       Scope:
@@ -1424,6 +1445,10 @@ Resources:
         SourceIdentifier: WAFV2_LOGGING_ENABLED
     Type: AWS::Config::ConfigRule
 Conditions:
+  CommercialPartition:
+    Fn::Equals:
+      - Ref: AWS::Partition
+      - aws
   accessKeysRotatedParamMaxAccessKeyAge:
     Fn::Not:
     - Fn::Equals:
@@ -1443,7 +1468,8 @@ Conditions:
     Fn::Not:
     - Fn::Equals:
       - ''
-      - Ref: EcsNoEnvironmentSecretsParamSecretKeys
+      - Ref: EcsNoEnvironmentSecrets
+    Condition: CommercialPartitionParamSecretKeys
   iamCustomerPolicyBlockedKmsActionsParamBlockedActionsPatterns:
     Fn::Not:
     - Fn::Equals:

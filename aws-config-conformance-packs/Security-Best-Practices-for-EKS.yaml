@@ -9,21 +9,24 @@
 ##################################################################################
 
 Parameters:
-  EksClusterOldestSupportedVersionParamOldestVersionSupported:
+  EksClusterOldestSupportedVersion
+    Condition: CommercialPartitionParamOldestVersionSupported:
     Default: '1.2'
     Type: String
   EksClusterSupportedVersionParamOldestVersionSupported:
     Default: '1.2'
     Type: String
 Resources:
-  EksClusterOldestSupportedVersion:
+  EksClusterOldestSupportedVersion
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: eks-cluster-oldest-supported-version
       InputParameters:
         oldestVersionSupported:
           Fn::If:
           - eksClusterOldestSupportedVersionParamOldestVersionSupported
-          - Ref: EksClusterOldestSupportedVersionParamOldestVersionSupported
+          - Ref: EksClusterOldestSupportedVersion
+    Condition: CommercialPartitionParamOldestVersionSupported
           - Ref: AWS::NoValue
       Scope:
         ComplianceResourceTypes:
@@ -63,11 +66,16 @@ Resources:
         SourceIdentifier: EKS_SECRETS_ENCRYPTED
     Type: AWS::Config::ConfigRule
 Conditions:
+  CommercialPartition:
+    Fn::Equals:
+      - Ref: AWS::Partition
+      - aws
   eksClusterOldestSupportedVersionParamOldestVersionSupported:
     Fn::Not:
     - Fn::Equals:
       - ''
-      - Ref: EksClusterOldestSupportedVersionParamOldestVersionSupported
+      - Ref: EksClusterOldestSupportedVersion
+    Condition: CommercialPartitionParamOldestVersionSupported
   eksClusterSupportedVersionParamOldestVersionSupported:
     Fn::Not:
     - Fn::Equals:

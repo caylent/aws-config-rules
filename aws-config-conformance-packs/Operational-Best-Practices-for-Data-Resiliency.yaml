@@ -188,7 +188,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: KMS_CMK_NOT_SCHEDULED_FOR_DELETION
     Type: AWS::Config::ConfigRule
-  OpensearchDataNodeFaultTolerance:
+  OpensearchDataNodeFaultTolerance
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: opensearch-data-node-fault-tolerance
       Scope:
@@ -269,6 +270,10 @@ Resources:
         SourceIdentifier: S3_VERSION_LIFECYCLE_POLICY_CHECK
     Type: AWS::Config::ConfigRule
 Conditions:
+  CommercialPartition:
+    Fn::Equals:
+      - Ref: AWS::Partition
+      - aws
   backupPlanMinFrequencyAndMinRetentionCheckParamRequiredFrequencyUnit:
     Fn::Not:
     - Fn::Equals:

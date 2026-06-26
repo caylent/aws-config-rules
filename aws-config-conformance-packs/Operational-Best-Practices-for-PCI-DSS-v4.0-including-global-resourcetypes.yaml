@@ -30,16 +30,19 @@ Parameters:
   LambdaFunctionSettingsCheckParamRuntime:
     Default: python3.9, java11, java8.al2, nodejs20.x,nodejs18.x,python3.12, python3.11,python3.10,java21,java17,dotnet8,ruby3.3,ruby3.2
     Type: String
-  NetfwPolicyDefaultActionFragmentPacketsParamStatelessFragmentDefaultActions:
+  NetfwPolicyDefaultActionFragmentPackets
+    Condition: CommercialPartitionParamStatelessFragmentDefaultActions:
     Default: aws:drop,aws:forward_to_sfe
     Type: String
-  NetfwPolicyDefaultActionFullPacketsParamStatelessDefaultActions:
+  NetfwPolicyDefaultActionFullPackets
+    Condition: CommercialPartitionParamStatelessDefaultActions:
     Default: aws:drop,aws:forward_to_sfe
     Type: String
   Ec2VolumeInuseCheckParamDeleteOnTermination:
     Default: 'true'
     Type: String
-  EksClusterOldestSupportedVersionParamOldestVersionSupported:
+  EksClusterOldestSupportedVersion
+    Condition: CommercialPartitionParamOldestVersionSupported:
     Default: '1.2'
     Type: String
   CloudwatchAlarmActionCheckParamAlarmActionRequired:
@@ -74,7 +77,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: ACCESS_KEYS_ROTATED
     Type: AWS::Config::ConfigRule
-  CloudFrontSecurityPolicyCheck:
+  CloudFrontSecurityPolicyCheck
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: cloudfront-security-policy-check
       Scope:
@@ -84,7 +88,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: CLOUDFRONT_SECURITY_POLICY_CHECK
     Type: AWS::Config::ConfigRule
-  CloudfrontSniEnabled:
+  CloudfrontSniEnabled
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: cloudfront-sni-enabled
       Scope:
@@ -215,7 +220,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: FSX_RESOURCES_PROTECTED_BY_BACKUP_PLAN
     Type: AWS::Config::ConfigRule
-  NeptuneClusterBackupRetentionCheck:
+  NeptuneClusterBackupRetention
+    Condition: CommercialPartitionCheck:
     Properties:
       ConfigRuleName: neptune-cluster-backup-retention-check
       Scope:
@@ -265,7 +271,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: S3_RESOURCES_PROTECTED_BY_BACKUP_PLAN
     Type: AWS::Config::ConfigRule
-  CloudfrontOriginAccessIdentityEnabled:
+  CloudfrontOriginAccessIdentityEnabled
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: cloudfront-origin-access-identity-enabled
       Scope:
@@ -275,7 +282,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: CLOUDFRONT_ORIGIN_ACCESS_IDENTITY_ENABLED
     Type: AWS::Config::ConfigRule
-  CloudfrontS3OriginAccessControlEnabled:
+  CloudfrontS3OriginAccessControlEnabled
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: cloudfront-s3-origin-access-control-enabled
       Scope:
@@ -315,7 +323,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: SERVICE_CATALOG_SHARED_WITHIN_ORGANIZATION
     Type: AWS::Config::ConfigRule
-  SecurityAccountInformationProvided:
+  SecurityAccountInformationProvided
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: security-account-information-provided
       Scope:
@@ -325,7 +334,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: SECURITY_ACCOUNT_INFORMATION_PROVIDED
     Type: AWS::Config::ConfigRule
-  ACMCertificateRSACheck:
+  ACMCertificateRSACheck
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: acm-certificate-rsa-check
       Scope:
@@ -335,7 +345,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: ACM_CERTIFICATE_RSA_CHECK
     Type: AWS::Config::ConfigRule
-  ACMPCARootCADisabled:
+  ACMPCARootCADisabled
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: acm-pca-root-ca-disabled
       Scope:
@@ -345,7 +356,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: ACM_PCA_ROOT_CA_DISABLED
     Type: AWS::Config::ConfigRule
-  APIGWV2AcessLogsEnables:
+  APIGWV2AcessLogsEnables
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: api-gwv2-access-logs-enabled
       Source:
@@ -378,7 +390,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: API_GW_XRAY_ENABLED
     Type: AWS::Config::ConfigRule
-  AthenaWorkgroupEncryptedatRest:
+  AthenaWorkgroupEncryptedatRest
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: athena-workgroup-encrypted-at-rest
       Source:
@@ -395,7 +408,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: CLOUDFORMATION_STACK_NOTIFICATION_CHECK
     Type: AWS::Config::ConfigRule
-  CloudfrontAccesslogsEnabled:
+  CloudfrontAccesslogsEnabled
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: cloudfront-accesslogs-enabled
       Scope:
@@ -405,7 +419,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: CLOUDFRONT_ACCESSLOGS_ENABLED
     Type: AWS::Config::ConfigRule
-  CloudfrontAssociatedWithWaf:
+  CloudfrontAssociatedWithWaf
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: cloudfront-associated-with-waf
       Scope:
@@ -415,7 +430,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: CLOUDFRONT_ASSOCIATED_WITH_WAF
     Type: AWS::Config::ConfigRule
-  CloudfrontCustomSslCertificate:
+  CloudfrontCustomSslCertificate
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: cloudfront-custom-ssl-certificate
       Scope:
@@ -461,7 +477,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: S3_BUCKET_POLICY_NOT_MORE_PERMISSIVE
     Type: AWS::Config::ConfigRule
-  ShieldDrtAccess:
+  ShieldDrtAccess
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: shield-drt-access
       Source:
@@ -497,56 +514,64 @@ Resources:
         Owner: AWS
         SourceIdentifier: LAMBDA_FUNCTION_SETTINGS_CHECK
     Type: AWS::Config::ConfigRule
-  MacieAutoSensitiveDataDiscoveryCheck:
+  MacieAutoSensitiveDataDiscoveryCheck
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: macie-auto-sensitive-data-discovery-check
       Source:
         Owner: AWS
         SourceIdentifier: MACIE_AUTO_SENSITIVE_DATA_DISCOVERY_CHECK
     Type: AWS::Config::ConfigRule
-  MacieStatusCheck:
+  MacieStatus
+    Condition: CommercialPartitionCheck:
     Properties:
       ConfigRuleName: macie-status-check
       Source:
         Owner: AWS
         SourceIdentifier: MACIE_STATUS_CHECK
     Type: AWS::Config::ConfigRule
-  NeptuneCluserCloudwatchLogExportEnabled:
+  NeptuneCluserCloudwatchLogExportEnabled
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: neptune-cluster-cloudwatch-log-export-enabled
       Source:
         Owner: AWS
         SourceIdentifier: NEPTUNE_CLUSTER_CLOUDWATCH_LOG_EXPORT_ENABLED
     Type: AWS::Config::ConfigRule
-  NeptuneCluserIAMDatabaseAuthentication:
+  NeptuneCluserIAMDatabaseAuthentication
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: neptune-cluster-iam-database-authentication
       Source:
         Owner: AWS
         SourceIdentifier: NEPTUNE_CLUSTER_IAM_DATABASE_AUTHENTICATION
     Type: AWS::Config::ConfigRule
-  NeptuneCluserSnapshotEncrypted:
+  NeptuneCluserSnapshotEncrypted
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: neptune-cluster-snapshot-encrypted
       Source:
         Owner: AWS
         SourceIdentifier: NEPTUNE_CLUSTER_SNAPSHOT_ENCRYPTED
     Type: AWS::Config::ConfigRule
-  NeptuneCluserSnapshotPublicEncrypted:
+  NeptuneCluserSnapshotPublicEncrypted
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: neptune-cluster-snapshot-public-encrypted
       Source:
         Owner: AWS
         SourceIdentifier: NEPTUNE_CLUSTER_SNAPSHOT_PUBLIC_PROHIBITED
     Type: AWS::Config::ConfigRule
-  NetfwPolicyDefaultActionFragmentPackets:
+  NetfwPolicyDefaultActionFragmentPackets
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: netfw-policy-default-action-fragment-packets
       InputParameters:
         statelessFragmentDefaultActions:
           Fn::If:
           - netfwPolicyDefaultActionFragmentPacketsParamStatelessFragmentDefaultActions
-          - Ref: NetfwPolicyDefaultActionFragmentPacketsParamStatelessFragmentDefaultActions
+          - Ref: NetfwPolicyDefaultActionFragmentPackets
+    Condition: CommercialPartitionParamStatelessFragmentDefaultActions
           - Ref: AWS::NoValue
       Scope:
         ComplianceResourceTypes:
@@ -555,14 +580,16 @@ Resources:
         Owner: AWS
         SourceIdentifier: NETFW_POLICY_DEFAULT_ACTION_FRAGMENT_PACKETS
     Type: AWS::Config::ConfigRule
-  NetfwPolicyDefaultActionFullPackets:
+  NetfwPolicyDefaultActionFullPackets
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: netfw-policy-default-action-full-packets
       InputParameters:
         statelessDefaultActions:
           Fn::If:
           - netfwPolicyDefaultActionFullPacketsParamStatelessDefaultActions
-          - Ref: NetfwPolicyDefaultActionFullPacketsParamStatelessDefaultActions
+          - Ref: NetfwPolicyDefaultActionFullPackets
+    Condition: CommercialPartitionParamStatelessDefaultActions
           - Ref: AWS::NoValue
       Scope:
         ComplianceResourceTypes:
@@ -581,7 +608,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: RDS_CLUSTER_IAM_AUTHENTICATION_ENABLED
     Type: AWS::Config::ConfigRule
-  RDSDBSecurityGroupNotAllowed:
+  RDSDBSecurityGroupNotAllowed
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: rds-db-security-group-not-allowed
       Source:
@@ -638,7 +666,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: EC2_INSTANCE_PROFILE_ATTACHED
     Type: AWS::Config::ConfigRule
-  Ec2NoAmazonKeyPair:
+  Ec2NoAmazonKeyPair
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: ec2-no-amazon-key-pair
       Scope:
@@ -648,7 +677,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: EC2_NO_AMAZON_KEY_PAIR
     Type: AWS::Config::ConfigRule
-  EC2TransitGatewayAutoVPCAttachDisabled:
+  EC2TransitGatewayAutoVPCAttachDisabled
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: ec2-transit-gateway-auto-vpc-attach-disabled
       Source:
@@ -681,14 +711,16 @@ Resources:
         Owner: AWS
         SourceIdentifier: ECR_PRIVATE_LIFECYCLE_POLICY_CONFIGURED
     Type: AWS::Config::ConfigRule
-  EcsTaskDefinitionLogConfiguration:
+  EcsTaskDefinitionLogConfiguration
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: ecs-task-definition-log-configuration
       Source:
         Owner: AWS
         SourceIdentifier: ECS_TASK_DEFINITION_LOG_CONFIGURATION
     Type: AWS::Config::ConfigRule
-  EcsTaskDefinitionPidModeCheck:
+  EcsTaskDefinitionPidModeCheck
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: ecs-task-definition-pid-mode-check
       Scope:
@@ -698,14 +730,16 @@ Resources:
         Owner: AWS
         SourceIdentifier: ECS_TASK_DEFINITION_PID_MODE_CHECK
     Type: AWS::Config::ConfigRule
-  EksClusterOldestSupportedVersion:
+  EksClusterOldestSupportedVersion
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: eks-cluster-oldest-supported-version
       InputParameters:
         oldestVersionSupported:
           Fn::If:
           - eksClusterOldestSupportedVersionParamOldestVersionSupported
-          - Ref: EksClusterOldestSupportedVersionParamOldestVersionSupported
+          - Ref: EksClusterOldestSupportedVersion
+    Condition: CommercialPartitionParamOldestVersionSupported
           - Ref: AWS::NoValue
       Scope:
         ComplianceResourceTypes:
@@ -774,7 +808,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: CLOUDWATCH_ALARM_SETTINGS_CHECK
     Type: AWS::Config::ConfigRule
-  CodebuildProjectArtifactEncryption:
+  CodebuildProjectArtifactEncryption
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: codebuild-project-artifact-encryption
       Scope:
@@ -808,7 +843,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: MULTI_REGION_CLOUD_TRAIL_ENABLED
     Type: AWS::Config::ConfigRule
-  DAXEncryptionEnabled:
+  DAXEncryptionEnabled
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: dax-encryption-enabled
       Scope:
@@ -848,7 +884,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: EKS_ENDPOINT_NO_PUBLIC_ACCESS
     Type: AWS::Config::ConfigRule
-  AppsyncLoggingEnabled:
+  AppsyncLoggingEnabled
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: appsync-logging-enabled
       Scope:
@@ -858,7 +895,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: APPSYNC_LOGGING_ENABLED
     Type: AWS::Config::ConfigRule
-  WAFClassicLoggingEnabled:
+  WAFClassicLoggingEnabled
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: waf-classic-logging-enabled
       Scope:
@@ -898,7 +936,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: API_GW_CACHE_ENABLED_AND_ENCRYPTED
     Type: AWS::Config::ConfigRule
-  AppsyncAssociatedwithWAF:
+  AppsyncAssociatedwithWAF
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: appsync-associated-with-waf
       Scope:
@@ -918,7 +957,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: AUTOSCALING_LAUNCHCONFIG_REQUIRES_IMDSV2
     Type: AWS::Config::ConfigRule
-  MQCloudwatchAuditLoggingEnabled:
+  MQCloudwatchAuditLoggingEnabled
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: mq-cloudwatch-audit-logging-enabled
       Scope:
@@ -938,7 +978,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: MQ_CLOUDWATCH_AUDIT_LOG_ENABLED
     Type: AWS::Config::ConfigRule
-  DocDBClusterEncrypted:
+  DocDBClusterEncrypted
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: docdb-cluster-encrypted
       Scope:
@@ -948,7 +989,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: DOCDB_CLUSTER_ENCRYPTED
     Type: AWS::Config::ConfigRule
-  DocDBClusterSnapshotPublicProhibited:
+  DocDBClusterSnapshotPublicProhibited
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: docdb-cluster-snapshot-public-prohibited
       Scope:
@@ -988,7 +1030,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: BACKUP_RECOVERY_POINT_MANUAL_DELETION_DISABLED
     Type: AWS::Config::ConfigRule
-  CloudfrontNoDeprecatedSSLProtocols:
+  CloudfrontNoDeprecatedSSLProtocols
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: cloudfront-no-deprecated-ssl-protocols
       Scope:
@@ -998,7 +1041,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: CLOUDFRONT_NO_DEPRECATED_SSL_PROTOCOLS
     Type: AWS::Config::ConfigRule
-  CloudfrontTraffictoOriginEncrypted:
+  CloudfrontTraffictoOriginEncrypted
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: cloudfront-traffic-to-origin-encrypted
       Scope:
@@ -1008,7 +1052,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: CLOUDFRONT_TRAFFIC_TO_ORIGIN_ENCRYPTED
     Type: AWS::Config::ConfigRule
-  CloudfrontViewwePolicyHTTPS:
+  CloudfrontViewwePolicyHTTPS
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: cloudfront-viewer-policy-https
       Scope:
@@ -1038,7 +1083,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: CODEBUILD_PROJECT_SOURCE_REPO_URL_CHECK
     Type: AWS::Config::ConfigRule
-  CodedeployLambdaAllatonceTrafficShiftDisabled:
+  CodedeployLambdaAllatonceTrafficShiftDisabled
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: codedeploy-lambda-allatonce-traffic-shift-disabled
       Scope:
@@ -1048,7 +1094,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: CODEDEPLOY_LAMBDA_ALLATONCE_TRAFFIC_SHIFT_DISABLED
     Type: AWS::Config::ConfigRule
-  CodepipelineDeploymentCountCheck:
+  CodepipelineDeploymentCountCheck
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: codepipeline-deployment-count-check
       Scope:
@@ -1068,7 +1115,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: ELB_ACM_CERTIFICATE_REQUIRED
     Type: AWS::Config::ConfigRule
-  EMRBlockPublicAcces:
+  EMRBlockPublicAcces
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: emr-block-public-access
       Scope:
@@ -1098,7 +1146,8 @@ Resources:
         Owner: AWS
         SourceIdentifier:  NACL_NO_UNRESTRICTED_SSH_RDP
     Type: AWS::Config::ConfigRule
-  DaxTLSEndpointEncryption:
+  DaxTLSEndpointEncryption
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: dax-tls-endpoint-encryption
       Scope:
@@ -1108,7 +1157,8 @@ Resources:
         Owner: AWS
         SourceIdentifier:  DAX_TLS_ENDPOINT_ENCRYPTION
     Type: AWS::Config::ConfigRule
-  EKSClusterLoggingEnabled:
+  EKSClusterLoggingEnabled
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: eks-cluster-logging-enabled
       Scope:
@@ -1128,7 +1178,8 @@ Resources:
         Owner: AWS
         SourceIdentifier:  EKS_CLUSTER_SECRETS_ENCRYPTED
     Type: AWS::Config::ConfigRule
-  ElasticBeanstalkLogstoCloudwatch:
+  ElasticBeanstalkLogstoCloudwatch
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: elastic-beanstalk-logs-to-cloudwatch
       Scope:
@@ -1138,7 +1189,8 @@ Resources:
         Owner: AWS
         SourceIdentifier:  ELASTIC_BEANSTALK_LOGS_TO_CLOUDWATCH
     Type: AWS::Config::ConfigRule
-  WAFv2WebaclnotEmpty:
+  WAFv2WebaclnotEmpty
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: wafv2-webacl-not-empty
       Scope:
@@ -1148,7 +1200,8 @@ Resources:
         Owner: AWS
         SourceIdentifier:  WAFV2_WEBACL_NOT_EMPTY
     Type: AWS::Config::ConfigRule
-  WAFv2RulegroupnotEmpty:
+  WAFv2RulegroupnotEmpty
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: wafv2-rulegroup-not-empty
       Scope:
@@ -1158,7 +1211,8 @@ Resources:
         Owner: AWS
         SourceIdentifier:  WAFV2_RULEGROUP_NOT_EMPTY
     Type: AWS::Config::ConfigRule
-  WAFv2RulegroupLoggingEnabled:
+  WAFv2RulegroupLoggingEnabled
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: wafv2-rulegroup-logging-enabled
       Scope:
@@ -1168,7 +1222,8 @@ Resources:
         Owner: AWS
         SourceIdentifier:  WAFV2_RULEGROUP_LOGGING_ENABLED
     Type: AWS::Config::ConfigRule
-  WAFGlobalWebaclnotEmpty:
+  WAFGlobalWebaclnotEmpty
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: waf-global-webacl-not-empty
       Scope:
@@ -1178,7 +1233,8 @@ Resources:
         Owner: AWS
         SourceIdentifier:  WAF_GLOBAL_WEBACL_NOT_EMPTY
     Type: AWS::Config::ConfigRule
-  WAFGlobalRulegroupnotEmpty:
+  WAFGlobalRulegroupnotEmpty
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: waf-global-rulegroup-not-empty
       Scope:
@@ -1188,7 +1244,8 @@ Resources:
         Owner: AWS
         SourceIdentifier:  WAF_GLOBAL_RULEGROUP_NOT_EMPTY
     Type: AWS::Config::ConfigRule 
-  WAFGlobalRulenotEmpty:
+  WAFGlobalRulenotEmpty
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: waf-global-rule-not-empty
       Scope:
@@ -1228,7 +1285,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: SECRETSMANAGER_SECRET_UNUSED
     Type: AWS::Config::ConfigRule
-  SNSTopicMessageDeliveryNotificationEnabled:
+  SNSTopicMessageDeliveryNotificationEnabled
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: sns-topic-message-delivery-notification-enabled
       Scope:
@@ -1238,7 +1296,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: SNS_TOPIC_MESSAGE_DELIVERY_NOTIFICATION_ENABLED
     Type: AWS::Config::ConfigRule
-  StepFunctionsStateMachineLoggingEnabled:
+  StepFunctionsStateMachineLoggingEnabled
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: step-functions-state-machine-logging-enabled
       Scope:
@@ -1248,7 +1307,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: STEP_FUNCTIONS_STATE_MACHINE_LOGGING_ENABLED
     Type: AWS::Config::ConfigRule
-  EC2ClientVPNnotAuthorizeAll:
+  EC2ClientVPNnotAuthorizeAll
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: ec2-client-vpn-not-authorize-all
       Scope:
@@ -1258,7 +1318,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: EC2_CLIENT_VPN_NOT_AUTHORIZE_ALL
     Type: AWS::Config::ConfigRule 
-  EC2LaunchTemplatePublicIPDisabled:
+  EC2LaunchTemplatePublicIPDisabled
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: ec2-launch-template-public-ip-disabled
       Scope:
@@ -1288,7 +1349,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: KINESIS_STREAM_ENCRYPTED
     Type: AWS::Config::ConfigRule
-  MSKinClusterNodeRequireTLS:
+  MSKinClusterNodeRequireTLS
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: msk-in-cluster-node-require-tls
       Scope:
@@ -1298,7 +1360,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: MSK_IN_CLUSTER_NODE_REQUIRE_TLS
     Type: AWS::Config::ConfigRule
-  NeptuneClusterEncrypted:
+  NeptuneClusterEncrypted
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: neptune-cluster-encrypted
       Scope:
@@ -1308,7 +1371,8 @@ Resources:
         Owner: AWS
         SourceIdentifier:  NEPTUNE_CLUSTER_ENCRYPTED
     Type: AWS::Config::ConfigRule
-  NetfwLoggingEnabled:
+  NetfwLoggingEnabled
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: netfw-logging-enabled
       Scope:
@@ -1318,7 +1382,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: NETFW_LOGGING_ENABLED
     Type: AWS::Config::ConfigRule
-  DMSEndpointSSLConfigured:
+  DMSEndpointSSLConfigured
+    Condition: CommercialPartition:
     Properties:
       ConfigRuleName: dms-endpoint-ssl-configured
       Scope:
@@ -1369,6 +1434,10 @@ Resources:
         SourceIdentifier: S3_BUCKET_MFA_DELETE_ENABLED
     Type: AWS::Config::ConfigRule 
 Conditions:
+  CommercialPartition:
+    Fn::Equals:
+      - Ref: AWS::Partition
+      - aws
   accessKeysRotatedParamMaxAccessKeyAge:
     Fn::Not:
     - Fn::Equals:
@@ -1398,12 +1467,14 @@ Conditions:
     Fn::Not:
     - Fn::Equals:
       - ''
-      - Ref: NetfwPolicyDefaultActionFragmentPacketsParamStatelessFragmentDefaultActions
+      - Ref: NetfwPolicyDefaultActionFragmentPackets
+    Condition: CommercialPartitionParamStatelessFragmentDefaultActions
   netfwPolicyDefaultActionFullPacketsParamStatelessDefaultActions:
     Fn::Not:
     - Fn::Equals:
       - ''
-      - Ref: NetfwPolicyDefaultActionFullPacketsParamStatelessDefaultActions
+      - Ref: NetfwPolicyDefaultActionFullPackets
+    Condition: CommercialPartitionParamStatelessDefaultActions
   ec2VolumeInuseCheckParamDeleteOnTermination:
     Fn::Not:
     - Fn::Equals:
@@ -1413,7 +1484,8 @@ Conditions:
     Fn::Not:
     - Fn::Equals:
       - ''
-      - Ref: EksClusterOldestSupportedVersionParamOldestVersionSupported
+      - Ref: EksClusterOldestSupportedVersion
+    Condition: CommercialPartitionParamOldestVersionSupported
   cloudwatchAlarmActionCheckParamAlarmActionRequired:
     Fn::Not:
     - Fn::Equals:
