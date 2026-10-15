@@ -6,7 +6,7 @@
 * *[List of AWS Config Managed Rules by Region Availability | AWS GovCloud (US-East)](https://docs.aws.amazon.com/config/latest/developerguide/managing-rules-by-region-availability.html#aws-govcloud-us-east-section-head)*
 * *[List of AWS Config Managed Rules by Region Availability | AWS GovCloud (US-West)](https://docs.aws.amazon.com/config/latest/developerguide/managing-rules-by-region-availability.html#aws-govcloud-us-west-section-head)*
 
-*See also a [script](region-check/region-check.py) to reveal Rules in a Conformance Pack that are not supported in a Partition/Region.*
+*See also a [script](aws-config-conformance-packs/region-check) to reveal Rules in a Conformance Pack that are not supported in a Partition/Region.*
 
 # AWS Config Rules Repository
 
