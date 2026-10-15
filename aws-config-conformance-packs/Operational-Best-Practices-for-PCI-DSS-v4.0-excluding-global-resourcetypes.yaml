@@ -1168,8 +1168,7 @@ Conditions:
     Fn::Not:
     - Fn::Equals:
       - ''
-      - Ref: NetfwPolicyDefaultActionFragmentPackets
-    Condition: CommercialPartitionParamStatelessFragmentDefaultActions
+      - Ref: NetfwPolicyDefaultActionFragmentPacketsParamStatelessFragmentDefaultActions
   netfwPolicyDefaultActionFullPacketsParamStatelessDefaultActions:
     Fn::Not:
     - Fn::Equals:
