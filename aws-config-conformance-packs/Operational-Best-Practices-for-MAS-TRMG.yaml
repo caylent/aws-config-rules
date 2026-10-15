@@ -571,8 +571,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: ELB_TLS_HTTPS_LISTENERS_ONLY
     Type: AWS::Config::ConfigRule
-  Elbv2AcmCertificateRequired
-    Condition: CommercialPartition:
+  Elbv2AcmCertificateRequired:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: elbv2-acm-certificate-required
       Source:
@@ -852,8 +852,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: NO_UNRESTRICTED_ROUTE_TO_IGW
     Type: AWS::Config::ConfigRule
-  OpensearchDataNodeFaultTolerance
-    Condition: CommercialPartition:
+  OpensearchDataNodeFaultTolerance:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: opensearch-data-node-fault-tolerance
       Scope:
@@ -863,8 +863,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: OPENSEARCH_DATA_NODE_FAULT_TOLERANCE
     Type: AWS::Config::ConfigRule
-  OpensearchEncryptedAtRest
-    Condition: CommercialPartition:
+  OpensearchEncryptedAtRest:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: opensearch-encrypted-at-rest
       Scope:
@@ -874,8 +874,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: OPENSEARCH_ENCRYPTED_AT_REST
     Type: AWS::Config::ConfigRule
-  OpensearchHttpsRequired
-    Condition: CommercialPartition:
+  OpensearchHttpsRequired:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: opensearch-https-required
       Scope:
@@ -885,8 +885,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: OPENSEARCH_HTTPS_REQUIRED
     Type: AWS::Config::ConfigRule
-  OpensearchInVpcOnly
-    Condition: CommercialPartition:
+  OpensearchInVpcOnly:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: opensearch-in-vpc-only
       Scope:
@@ -896,8 +896,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: OPENSEARCH_IN_VPC_ONLY
     Type: AWS::Config::ConfigRule
-  OpensearchLogsToCloudwatch
-    Condition: CommercialPartition:
+  OpensearchLogsToCloudwatch:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: opensearch-logs-to-cloudwatch
       Scope:
@@ -907,8 +907,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: OPENSEARCH_LOGS_TO_CLOUDWATCH
     Type: AWS::Config::ConfigRule
-  OpensearchNodeToNodeEncryptionCheck
-    Condition: CommercialPartition:
+  OpensearchNodeToNodeEncryptionCheck:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: opensearch-node-to-node-encryption-check
       Scope:
@@ -1122,16 +1122,16 @@ Resources:
         Owner: AWS
         SourceIdentifier: RESTRICTED_INCOMING_TRAFFIC
     Type: AWS::Config::ConfigRule
-  RootAccountHardwareMfaEnabled
-    Condition: CommercialPartition:
+  RootAccountHardwareMfaEnabled:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: root-account-hardware-mfa-enabled
       Source:
         Owner: AWS
         SourceIdentifier: ROOT_ACCOUNT_HARDWARE_MFA_ENABLED
     Type: AWS::Config::ConfigRule
-  RootAccountMfaEnabled
-    Condition: CommercialPartition:
+  RootAccountMfaEnabled:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: root-account-mfa-enabled
       Source:

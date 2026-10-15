@@ -208,8 +208,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: CLOUDTRAIL_S3_DATAEVENTS_ENABLED
     Type: AWS::Config::ConfigRule
-  CodebuildProjectArtifactEncryption
-    Condition: CommercialPartition:
+  CodebuildProjectArtifactEncryption:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: codebuild-project-artifact-encryption
       Scope:
@@ -461,8 +461,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: ECS_FARGATE_LATEST_PLATFORM_VERSION
     Type: AWS::Config::ConfigRule
-  EcsTaskDefinitionNonrootUser
-    Condition: CommercialPartition:
+  EcsTaskDefinitionNonrootUser:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: ecs-task-definition-nonroot-user
       Scope:
@@ -482,8 +482,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: ECS_TASK_DEFINITION_USER_FOR_HOST_MODE_CHECK
     Type: AWS::Config::ConfigRule
-  EfsAccessPointEnforceRootDirectory
-    Condition: CommercialPartition:
+  EfsAccessPointEnforceRootDirectory:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: efs-access-point-enforce-root-directory
       Scope:
@@ -619,16 +619,16 @@ Resources:
         Owner: AWS
         SourceIdentifier: ELB_TLS_HTTPS_LISTENERS_ONLY
     Type: AWS::Config::ConfigRule
-  Elbv2AcmCertificateRequired
-    Condition: CommercialPartition:
+  Elbv2AcmCertificateRequired:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: elbv2-acm-certificate-required
       Source:
         Owner: AWS
         SourceIdentifier: ELBV2_ACM_CERTIFICATE_REQUIRED
     Type: AWS::Config::ConfigRule
-  Elbv2MultipleAz
-    Condition: CommercialPartition:
+  Elbv2MultipleAz:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: elbv2-multiple-az
       Scope:
@@ -901,8 +901,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: NO_UNRESTRICTED_ROUTE_TO_IGW
     Type: AWS::Config::ConfigRule
-  OpensearchEncryptedAtRest
-    Condition: CommercialPartition:
+  OpensearchEncryptedAtRest:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: opensearch-encrypted-at-rest
       Scope:
@@ -912,8 +912,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: OPENSEARCH_ENCRYPTED_AT_REST
     Type: AWS::Config::ConfigRule
-  OpensearchHttpsRequired
-    Condition: CommercialPartition:
+  OpensearchHttpsRequired:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: opensearch-https-required
       Scope:
@@ -923,8 +923,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: OPENSEARCH_HTTPS_REQUIRED
     Type: AWS::Config::ConfigRule
-  OpensearchInVpcOnly
-    Condition: CommercialPartition:
+  OpensearchInVpcOnly:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: opensearch-in-vpc-only
       Scope:
@@ -934,8 +934,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: OPENSEARCH_IN_VPC_ONLY
     Type: AWS::Config::ConfigRule
-  OpensearchNodeToNodeEncryptionCheck
-    Condition: CommercialPartition:
+  OpensearchNodeToNodeEncryptionCheck:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: opensearch-node-to-node-encryption-check
       Scope:
@@ -1150,16 +1150,16 @@ Resources:
         Owner: AWS
         SourceIdentifier: RESTRICTED_INCOMING_TRAFFIC
     Type: AWS::Config::ConfigRule
-  RootAccountHardwareMfaEnabled
-    Condition: CommercialPartition:
+  RootAccountHardwareMfaEnabled:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: root-account-hardware-mfa-enabled
       Source:
         Owner: AWS
         SourceIdentifier: ROOT_ACCOUNT_HARDWARE_MFA_ENABLED
     Type: AWS::Config::ConfigRule
-  RootAccountMfaEnabled
-    Condition: CommercialPartition:
+  RootAccountMfaEnabled:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: root-account-mfa-enabled
       Source:
@@ -1419,8 +1419,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: WAFV2_LOGGING_ENABLED
     Type: AWS::Config::ConfigRule
-  AuditLogPolicyExists
-    Condition: CommercialPartition:
+  AuditLogPolicyExists:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: audit-log-policy-exists
       Description: Establish and maintain an audit log management policy that defines your organization's logging requirements. This includes, but is not limited to, review and retention of audit logs.

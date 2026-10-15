@@ -116,8 +116,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: CLOUDWATCH_LOG_GROUP_ENCRYPTED
     Type: AWS::Config::ConfigRule
-  CodebuildProjectArtifactEncryption
-    Condition: CommercialPartition:
+  CodebuildProjectArtifactEncryption:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: codebuild-project-artifact-encryption
       Scope:
@@ -190,8 +190,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: ECS_CONTAINERS_READONLY_ACCESS
     Type: AWS::Config::ConfigRule
-  EfsAccessPointEnforceRootDirectory
-    Condition: CommercialPartition:
+  EfsAccessPointEnforceRootDirectory:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: efs-access-point-enforce-root-directory
       Scope:
@@ -444,8 +444,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: MFA_ENABLED_FOR_IAM_CONSOLE_ACCESS
     Type: AWS::Config::ConfigRule
-  OpensearchAccessControlEnabled
-    Condition: CommercialPartition:
+  OpensearchAccessControlEnabled:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: opensearch-access-control-enabled
       Scope:
@@ -455,8 +455,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: OPENSEARCH_ACCESS_CONTROL_ENABLED
     Type: AWS::Config::ConfigRule
-  OpensearchEncryptedAtRest
-    Condition: CommercialPartition:
+  OpensearchEncryptedAtRest:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: opensearch-encrypted-at-rest
       Scope:
@@ -466,8 +466,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: OPENSEARCH_ENCRYPTED_AT_REST
     Type: AWS::Config::ConfigRule
-  OpensearchInVpcOnly
-    Condition: CommercialPartition:
+  OpensearchInVpcOnly:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: opensearch-in-vpc-only
       Scope:
@@ -477,8 +477,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: OPENSEARCH_IN_VPC_ONLY
     Type: AWS::Config::ConfigRule
-  OpensearchNodeToNodeEncryptionCheck
-    Condition: CommercialPartition:
+  OpensearchNodeToNodeEncryptionCheck:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: opensearch-node-to-node-encryption-check
       Scope:

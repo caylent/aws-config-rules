@@ -97,8 +97,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: REDSHIFT_DEFAULT_ADMIN_CHECK
     Type: AWS::Config::ConfigRule
-  RedshiftDefaultDbNameCheck
-    Condition: CommercialPartition:
+  RedshiftDefaultDbNameCheck:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: redshift-default-db-name-check
       Scope:

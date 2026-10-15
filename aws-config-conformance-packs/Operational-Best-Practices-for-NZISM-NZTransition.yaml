@@ -65,8 +65,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: CLOUD_TRAIL_LOG_FILE_VALIDATION_ENABLED
       Description: "MUST 16.6.12.C.01[CID:2022], MUST 23.5.11.C.01[CID:7496]| Access Control and Passwords/Event Logging and Auditing/Event log protection & Public Cloud Security/Logging ..."
-  CloudfrontAccesslogsEnabled
-    Condition: CommercialPartition:
+  CloudfrontAccesslogsEnabled:
+    Condition: CommercialPartition
     Condition: IsEdge
     Controls: ['2013', '7496']
     Type: AWS::Config::ConfigRule
@@ -76,8 +76,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: CLOUDFRONT_ACCESSLOGS_ENABLED
       Description: "SHOULD 16.6.10.C.02[CID:2013], MUST 23.5.11.C.01[CID:7496]| Access Control and Passwords/Event Logging and Auditing/Additional events to be logged & Public Cloud Secur..."
-  CloudfrontAssociatedWithWaf
-    Condition: CommercialPartition:
+  CloudfrontAssociatedWithWaf:
+    Condition: CommercialPartition
     Condition: IsEdge
     Controls: ['3562']
     Type: AWS::Config::ConfigRule
@@ -87,8 +87,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: CLOUDFRONT_ASSOCIATED_WITH_WAF
       Description: "MUST 19.1.12.C.01[CID:3562]| Gateway security/Gateways/Configuration of gateways"
-  CloudfrontDefaultRootObjectConfigured
-    Condition: CommercialPartition:
+  CloudfrontDefaultRootObjectConfigured:
+    Condition: CommercialPartition
     Condition: IsEdge
     Controls: ['1661']
     Type: AWS::Config::ConfigRule
@@ -98,8 +98,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: CLOUDFRONT_DEFAULT_ROOT_OBJECT_CONFIGURED
       Description: "SHOULD 14.5.6.C.01[CID:1661]| Software security/Web Application Development/Agency website content"
-  CloudfrontViewerPolicyHttps
-    Condition: CommercialPartition:
+  CloudfrontViewerPolicyHttps:
+    Condition: CommercialPartition
     Condition: IsEdge
     Controls: ['1847']
     Type: AWS::Config::ConfigRule

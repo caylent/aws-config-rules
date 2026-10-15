@@ -237,16 +237,16 @@ Resources:
         Owner: AWS
         SourceIdentifier: MFA_ENABLED_FOR_IAM_CONSOLE_ACCESS
     Type: AWS::Config::ConfigRule
-  RootAccountHardwareMfaEnabled
-    Condition: CommercialPartition:
+  RootAccountHardwareMfaEnabled:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: root-account-hardware-mfa-enabled
       Source:
         Owner: AWS
         SourceIdentifier: ROOT_ACCOUNT_HARDWARE_MFA_ENABLED
     Type: AWS::Config::ConfigRule
-  RootAccountMfaEnabled
-    Condition: CommercialPartition:
+  RootAccountMfaEnabled:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: root-account-mfa-enabled
       Source:

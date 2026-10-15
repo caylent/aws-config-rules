@@ -215,8 +215,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: ECS_FARGATE_LATEST_PLATFORM_VERSION
     Type: AWS::Config::ConfigRule
-  EcsTaskDefinitionNonrootUser
-    Condition: CommercialPartition:
+  EcsTaskDefinitionNonrootUser:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: ecs-task-definition-nonroot-user
       Scope:
@@ -433,16 +433,16 @@ Resources:
         Owner: AWS
         SourceIdentifier: REDSHIFT_CLUSTER_MAINTENANCESETTINGS_CHECK
     Type: AWS::Config::ConfigRule
-  RootAccountHardwareMfaEnabled
-    Condition: CommercialPartition:
+  RootAccountHardwareMfaEnabled:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: root-account-hardware-mfa-enabled
       Source:
         Owner: AWS
         SourceIdentifier: ROOT_ACCOUNT_HARDWARE_MFA_ENABLED
     Type: AWS::Config::ConfigRule
-  RootAccountMfaEnabled
-    Condition: CommercialPartition:
+  RootAccountMfaEnabled:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: root-account-mfa-enabled
       Source:
@@ -469,8 +469,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: S3_BUCKET_VERSIONING_ENABLED
     Type: AWS::Config::ConfigRule
-  WafRegionalRuleNotEmpty
-    Condition: CommercialPartition:
+  WafRegionalRuleNotEmpty:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: waf-regional-rule-not-empty
       Scope:
@@ -480,8 +480,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: WAF_REGIONAL_RULE_NOT_EMPTY
     Type: AWS::Config::ConfigRule
-  WafRegionalRulegroupNotEmpty
-    Condition: CommercialPartition:
+  WafRegionalRulegroupNotEmpty:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: waf-regional-rulegroup-not-empty
       Scope:
@@ -491,8 +491,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: WAF_REGIONAL_RULEGROUP_NOT_EMPTY
     Type: AWS::Config::ConfigRule
-  WafRegionalWebaclNotEmpty
-    Condition: CommercialPartition:
+  WafRegionalWebaclNotEmpty:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: waf-regional-webacl-not-empty
       Scope:

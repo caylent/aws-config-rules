@@ -92,8 +92,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: CLB_DESYNC_MODE_CHECK
     Type: AWS::Config::ConfigRule
-  ClbMultipleAz
-    Condition: CommercialPartition:
+  ClbMultipleAz:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: clb-multiple-az
       Scope:
@@ -186,16 +186,16 @@ Resources:
         Owner: AWS
         SourceIdentifier: ELB_TLS_HTTPS_LISTENERS_ONLY
     Type: AWS::Config::ConfigRule
-  Elbv2AcmCertificateRequired
-    Condition: CommercialPartition:
+  Elbv2AcmCertificateRequired:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: elbv2-acm-certificate-required
       Source:
         Owner: AWS
         SourceIdentifier: ELBV2_ACM_CERTIFICATE_REQUIRED
     Type: AWS::Config::ConfigRule
-  Elbv2MultipleAz
-    Condition: CommercialPartition:
+  Elbv2MultipleAz:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: elbv2-multiple-az
       Scope:

@@ -123,8 +123,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: BEANSTALK_ENHANCED_HEALTH_REPORTING_ENABLED
     Type: AWS::Config::ConfigRule
-  ClbMultipleAz
-    Condition: CommercialPartition:
+  ClbMultipleAz:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: clb-multiple-az
       Scope:
@@ -320,8 +320,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: ECS_CONTAINER_INSIGHTS_ENABLED
     Type: AWS::Config::ConfigRule
-  EcsTaskDefinitionMemoryHardLimit
-    Condition: CommercialPartition:
+  EcsTaskDefinitionMemoryHardLimit:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: ecs-task-definition-memory-hard-limit
       Scope:
@@ -393,8 +393,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: ELB_LOGGING_ENABLED
     Type: AWS::Config::ConfigRule
-  Elbv2MultipleAz
-    Condition: CommercialPartition:
+  Elbv2MultipleAz:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: elbv2-multiple-az
       Scope:
@@ -471,8 +471,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: LAMBDA_DLQ_CHECK
     Type: AWS::Config::ConfigRule
-  LambdaVpcMultiAzCheck
-    Condition: CommercialPartition:
+  LambdaVpcMultiAzCheck:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: lambda-vpc-multi-az-check
       Scope:
@@ -489,8 +489,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: MULTI_REGION_CLOUD_TRAIL_ENABLED
     Type: AWS::Config::ConfigRule
-  OpensearchDataNodeFaultTolerance
-    Condition: CommercialPartition:
+  OpensearchDataNodeFaultTolerance:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: opensearch-data-node-fault-tolerance
       Scope:
@@ -500,8 +500,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: OPENSEARCH_DATA_NODE_FAULT_TOLERANCE
     Type: AWS::Config::ConfigRule
-  OpensearchLogsToCloudwatch
-    Condition: CommercialPartition:
+  OpensearchLogsToCloudwatch:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: opensearch-logs-to-cloudwatch
       Scope:

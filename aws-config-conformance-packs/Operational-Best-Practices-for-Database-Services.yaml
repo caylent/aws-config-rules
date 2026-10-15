@@ -228,8 +228,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: RDS_STORAGE_ENCRYPTED
     Type: AWS::Config::ConfigRule
-  RedshiftAuditLoggingEnabled
-    Condition: CommercialPartition:
+  RedshiftAuditLoggingEnabled:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: redshift-audit-logging-enabled
       Scope:
@@ -308,8 +308,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: REDSHIFT_DEFAULT_ADMIN_CHECK
     Type: AWS::Config::ConfigRule
-  RedshiftDefaultDbNameCheck
-    Condition: CommercialPartition:
+  RedshiftDefaultDbNameCheck:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: redshift-default-db-name-check
       Scope:

@@ -209,8 +209,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: ELB_TLS_HTTPS_LISTENERS_ONLY
     Type: AWS::Config::ConfigRule
-  Elbv2AcmCertificateRequired
-    Condition: CommercialPartition:
+  Elbv2AcmCertificateRequired:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: elbv2-acm-certificate-required
       Source:

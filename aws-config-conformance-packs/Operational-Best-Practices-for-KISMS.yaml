@@ -612,8 +612,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: ELB_TLS_HTTPS_LISTENERS_ONLY
     Type: AWS::Config::ConfigRule
-  Elbv2AcmCertificateRequired
-    Condition: CommercialPartition:
+  Elbv2AcmCertificateRequired:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: elbv2-acm-certificate-required
       Source:
@@ -915,8 +915,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: NO_UNRESTRICTED_ROUTE_TO_IGW
     Type: AWS::Config::ConfigRule
-  OpensearchEncryptedAtRest
-    Condition: CommercialPartition:
+  OpensearchEncryptedAtRest:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: opensearch-encrypted-at-rest
       Scope:
@@ -926,8 +926,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: OPENSEARCH_ENCRYPTED_AT_REST
     Type: AWS::Config::ConfigRule
-  OpensearchNodeToNodeEncryptionCheck
-    Condition: CommercialPartition:
+  OpensearchNodeToNodeEncryptionCheck:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: opensearch-node-to-node-encryption-check
       Scope:
@@ -1131,8 +1131,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: RESTRICTED_INCOMING_TRAFFIC
     Type: AWS::Config::ConfigRule
-  RootAccountMfaEnabled
-    Condition: CommercialPartition:
+  RootAccountMfaEnabled:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: root-account-mfa-enabled
       Source:

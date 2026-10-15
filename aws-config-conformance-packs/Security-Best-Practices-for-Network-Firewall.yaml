@@ -16,8 +16,8 @@ Parameters:
     Default: aws:drop,aws:forward_to_sfe
     Type: String
 Resources:
-  NetfwPolicyDefaultActionFragmentPackets
-    Condition: CommercialPartition:
+  NetfwPolicyDefaultActionFragmentPackets:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: netfw-policy-default-action-fragment-packets
       InputParameters:
@@ -34,8 +34,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: NETFW_POLICY_DEFAULT_ACTION_FRAGMENT_PACKETS
     Type: AWS::Config::ConfigRule
-  NetfwPolicyDefaultActionFullPackets
-    Condition: CommercialPartition:
+  NetfwPolicyDefaultActionFullPackets:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: netfw-policy-default-action-full-packets
       InputParameters:

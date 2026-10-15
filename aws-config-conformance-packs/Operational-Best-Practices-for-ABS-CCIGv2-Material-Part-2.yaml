@@ -75,8 +75,8 @@ Resources:
         SourceIdentifier: NO_UNRESTRICTED_ROUTE_TO_IGW
     Type: AWS::Config::ConfigRule
 
-  OpensearchEncryptedAtRest
-    Condition: CommercialPartition:
+  OpensearchEncryptedAtRest:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: opensearch-encrypted-at-rest
       Scope:

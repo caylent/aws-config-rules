@@ -53,8 +53,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: CLOUDWATCH_ALARM_ACTION_CHECK
     Type: AWS::Config::ConfigRule
-  CloudwatchAlarmActionEnabledCheck
-    Condition: CommercialPartition:
+  CloudwatchAlarmActionEnabledCheck:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: cloudwatch-alarm-action-enabled-check
       Scope:

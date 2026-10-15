@@ -50,8 +50,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: LAMBDA_INSIDE_VPC
     Type: AWS::Config::ConfigRule
-  LambdaVpcMultiAzCheck
-    Condition: CommercialPartition:
+  LambdaVpcMultiAzCheck:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: lambda-vpc-multi-az-check
       Scope:

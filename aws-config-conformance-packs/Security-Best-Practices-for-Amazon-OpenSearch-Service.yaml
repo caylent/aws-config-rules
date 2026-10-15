@@ -13,8 +13,8 @@
 ##################################################################################
 
 Resources:
-  OpensearchAccessControlEnabled
-    Condition: CommercialPartition:
+  OpensearchAccessControlEnabled:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: opensearch-access-control-enabled
       Scope:
@@ -24,8 +24,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: OPENSEARCH_ACCESS_CONTROL_ENABLED
     Type: AWS::Config::ConfigRule
-  OpensearchAuditLoggingEnabled
-    Condition: CommercialPartition:
+  OpensearchAuditLoggingEnabled:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: opensearch-audit-logging-enabled
       Scope:
@@ -35,8 +35,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: OPENSEARCH_AUDIT_LOGGING_ENABLED
     Type: AWS::Config::ConfigRule
-  OpensearchDataNodeFaultTolerance
-    Condition: CommercialPartition:
+  OpensearchDataNodeFaultTolerance:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: opensearch-data-node-fault-tolerance
       Scope:
@@ -46,8 +46,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: OPENSEARCH_DATA_NODE_FAULT_TOLERANCE
     Type: AWS::Config::ConfigRule
-  OpensearchEncryptedAtRest
-    Condition: CommercialPartition:
+  OpensearchEncryptedAtRest:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: opensearch-encrypted-at-rest
       Scope:
@@ -57,8 +57,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: OPENSEARCH_ENCRYPTED_AT_REST
     Type: AWS::Config::ConfigRule
-  OpensearchHttpsRequired
-    Condition: CommercialPartition:
+  OpensearchHttpsRequired:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: opensearch-https-required
       Scope:
@@ -68,8 +68,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: OPENSEARCH_HTTPS_REQUIRED
     Type: AWS::Config::ConfigRule
-  OpensearchInVpcOnly
-    Condition: CommercialPartition:
+  OpensearchInVpcOnly:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: opensearch-in-vpc-only
       Scope:
@@ -79,8 +79,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: OPENSEARCH_IN_VPC_ONLY
     Type: AWS::Config::ConfigRule
-  OpensearchLogsToCloudwatch
-    Condition: CommercialPartition:
+  OpensearchLogsToCloudwatch:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: opensearch-logs-to-cloudwatch
       Scope:
@@ -90,8 +90,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: OPENSEARCH_LOGS_TO_CLOUDWATCH
     Type: AWS::Config::ConfigRule
-  OpensearchNodeToNodeEncryptionCheck
-    Condition: CommercialPartition:
+  OpensearchNodeToNodeEncryptionCheck:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: opensearch-node-to-node-encryption-check
       Scope:

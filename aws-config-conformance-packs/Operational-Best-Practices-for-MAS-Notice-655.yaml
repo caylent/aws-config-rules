@@ -220,8 +220,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: EC2_MANAGEDINSTANCE_PATCH_COMPLIANCE_STATUS_CHECK
     Type: AWS::Config::ConfigRule
-  Ec2SecurityGroupAttachedToEniPeriodic
-    Condition: CommercialPartition:
+  Ec2SecurityGroupAttachedToEniPeriodic:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: ec2-security-group-attached-to-eni-periodic
       Scope:
@@ -510,8 +510,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: MFA_ENABLED_FOR_IAM_CONSOLE_ACCESS
     Type: AWS::Config::ConfigRule
-  NetfwPolicyDefaultActionFragmentPackets
-    Condition: CommercialPartition:
+  NetfwPolicyDefaultActionFragmentPackets:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: netfw-policy-default-action-fragment-packets
       InputParameters:
@@ -528,8 +528,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: NETFW_POLICY_DEFAULT_ACTION_FRAGMENT_PACKETS
     Type: AWS::Config::ConfigRule
-  NetfwPolicyDefaultActionFullPackets
-    Condition: CommercialPartition:
+  NetfwPolicyDefaultActionFullPackets:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: netfw-policy-default-action-full-packets
       InputParameters:
@@ -576,8 +576,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: NO_UNRESTRICTED_ROUTE_TO_IGW
     Type: AWS::Config::ConfigRule
-  OpensearchInVpcOnly
-    Condition: CommercialPartition:
+  OpensearchInVpcOnly:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: opensearch-in-vpc-only
       Scope:
@@ -690,16 +690,16 @@ Resources:
         Owner: AWS
         SourceIdentifier: RESTRICTED_INCOMING_TRAFFIC
     Type: AWS::Config::ConfigRule
-  RootAccountHardwareMfaEnabled
-    Condition: CommercialPartition:
+  RootAccountHardwareMfaEnabled:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: root-account-hardware-mfa-enabled
       Source:
         Owner: AWS
         SourceIdentifier: ROOT_ACCOUNT_HARDWARE_MFA_ENABLED
     Type: AWS::Config::ConfigRule
-  RootAccountMfaEnabled
-    Condition: CommercialPartition:
+  RootAccountMfaEnabled:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: root-account-mfa-enabled
       Source:
@@ -841,8 +841,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: VPC_SG_OPEN_ONLY_TO_AUTHORIZED_PORTS
     Type: AWS::Config::ConfigRule
-  WafRegionalRuleNotEmpty
-    Condition: CommercialPartition:
+  WafRegionalRuleNotEmpty:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: waf-regional-rule-not-empty
       Scope:
@@ -852,8 +852,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: WAF_REGIONAL_RULE_NOT_EMPTY
     Type: AWS::Config::ConfigRule
-  WafRegionalRulegroupNotEmpty
-    Condition: CommercialPartition:
+  WafRegionalRulegroupNotEmpty:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: waf-regional-rulegroup-not-empty
       Scope:
@@ -863,8 +863,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: WAF_REGIONAL_RULEGROUP_NOT_EMPTY
     Type: AWS::Config::ConfigRule
-  WafRegionalWebaclNotEmpty
-    Condition: CommercialPartition:
+  WafRegionalWebaclNotEmpty:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: waf-regional-webacl-not-empty
       Scope:

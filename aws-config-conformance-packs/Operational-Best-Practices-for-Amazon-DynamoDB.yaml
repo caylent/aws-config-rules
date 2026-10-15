@@ -16,8 +16,8 @@ Parameters:
     Default: dynamodb
     Type: String
 Resources:
-  DaxEncryptionEnabled
-    Condition: CommercialPartition:
+  DaxEncryptionEnabled:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: dax-encryption-enabled
       Source:

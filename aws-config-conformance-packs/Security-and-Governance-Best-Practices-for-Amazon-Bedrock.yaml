@@ -35,8 +35,8 @@ Resources:
   # Bedrock AgentCore - Gateway, Runtime & Memory (3 rules)
   # ============================================
 
-  BedrockAgentCoreGatewayAuthorizerEnabled
-    Condition: CommercialPartition:
+  BedrockAgentCoreGatewayAuthorizerEnabled:
+    Condition: CommercialPartition
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: bedrockagentcore-gateway-authorizer-enabled
@@ -44,8 +44,8 @@ Resources:
           Owner: AWS
           SourceIdentifier: BEDROCKAGENTCORE_GATEWAY_AUTHORIZER_ENABLED
 
-  BedrockAgentCoreRuntimePrivateNetworkRequired
-    Condition: CommercialPartition:
+  BedrockAgentCoreRuntimePrivateNetworkRequired:
+    Condition: CommercialPartition
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: bedrockagentcore-runtime-private-network-required
@@ -53,8 +53,8 @@ Resources:
           Owner: AWS
           SourceIdentifier: BEDROCKAGENTCORE_RUNTIME_PRIVATE_NETWORK_REQUIRED
 
-  BedrockAgentCoreMemoryEncryptionEnabled
-    Condition: CommercialPartition:
+  BedrockAgentCoreMemoryEncryptionEnabled:
+    Condition: CommercialPartition
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: bedrock-agentcore-memory-encryption-enabled
@@ -66,8 +66,8 @@ Resources:
   # OpenSearch Serverless - Vector Search for RAG (1 rule)
   # ============================================
 
-  OpenSearchServerlessStandbyReplicasEnabled
-    Condition: CommercialPartition:
+  OpenSearchServerlessStandbyReplicasEnabled:
+    Condition: CommercialPartition
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: opensearchserverless-collection-standbyreplicas-enabled
@@ -79,8 +79,8 @@ Resources:
   # OpenSearch Domain - Vector Search for RAG (10 rules)
   # ============================================
 
-  OpenSearchAccessControl
-    Condition: CommercialPartition:
+  OpenSearchAccessControl:
+    Condition: CommercialPartition
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: opensearch-access-control-enabled
@@ -88,8 +88,8 @@ Resources:
           Owner: AWS
           SourceIdentifier: OPENSEARCH_ACCESS_CONTROL_ENABLED
 
-  OpenSearchAuditLogging
-    Condition: CommercialPartition:
+  OpenSearchAuditLogging:
+    Condition: CommercialPartition
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: opensearch-audit-logging-enabled
@@ -97,8 +97,8 @@ Resources:
           Owner: AWS
           SourceIdentifier: OPENSEARCH_AUDIT_LOGGING_ENABLED
 
-  OpenSearchDataNodeFaultTolerance
-    Condition: CommercialPartition:
+  OpenSearchDataNodeFaultTolerance:
+    Condition: CommercialPartition
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: opensearch-data-node-fault-tolerance
@@ -106,8 +106,8 @@ Resources:
           Owner: AWS
           SourceIdentifier: OPENSEARCH_DATA_NODE_FAULT_TOLERANCE
 
-  OpenSearchEncryptedAtRest
-    Condition: CommercialPartition:
+  OpenSearchEncryptedAtRest:
+    Condition: CommercialPartition
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: opensearch-encrypted-at-rest
@@ -115,8 +115,8 @@ Resources:
           Owner: AWS
           SourceIdentifier: OPENSEARCH_ENCRYPTED_AT_REST
 
-  OpenSearchHTTPSRequired
-    Condition: CommercialPartition:
+  OpenSearchHTTPSRequired:
+    Condition: CommercialPartition
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: opensearch-https-required
@@ -124,8 +124,8 @@ Resources:
           Owner: AWS
           SourceIdentifier: OPENSEARCH_HTTPS_REQUIRED
 
-  OpenSearchInVPCOnly
-    Condition: CommercialPartition:
+  OpenSearchInVPCOnly:
+    Condition: CommercialPartition
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: opensearch-in-vpc-only
@@ -133,8 +133,8 @@ Resources:
           Owner: AWS
           SourceIdentifier: OPENSEARCH_IN_VPC_ONLY
 
-  OpenSearchLogsToCloudWatch
-    Condition: CommercialPartition:
+  OpenSearchLogsToCloudWatch:
+    Condition: CommercialPartition
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: opensearch-logs-to-cloudwatch
@@ -142,8 +142,8 @@ Resources:
           Owner: AWS
           SourceIdentifier: OPENSEARCH_LOGS_TO_CLOUDWATCH
 
-  OpenSearchNodeToNodeEncryption
-    Condition: CommercialPartition:
+  OpenSearchNodeToNodeEncryption:
+    Condition: CommercialPartition
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: opensearch-node-to-node-encryption-check
@@ -382,8 +382,8 @@ Resources:
           endpointConfigurationTypes:
             Ref: ApiGwEndpointConfigurationTypes
 
-  APIGWRestAPITagged
-    Condition: CommercialPartition:
+  APIGWRestAPITagged:
+    Condition: CommercialPartition
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: api-gw-rest-api-tagged
@@ -391,8 +391,8 @@ Resources:
           Owner: AWS
           SourceIdentifier: API_GW_REST_API_TAGGED
 
-  APIGWStageTagged
-    Condition: CommercialPartition:
+  APIGWStageTagged:
+    Condition: CommercialPartition
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: api-gw-stage-tagged
@@ -400,8 +400,8 @@ Resources:
           Owner: AWS
           SourceIdentifier: API_GW_STAGE_TAGGED
 
-  APIGWv2AccessLogsEnabled
-    Condition: CommercialPartition:
+  APIGWv2AccessLogsEnabled:
+    Condition: CommercialPartition
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: api-gwv2-access-logs-enabled
@@ -409,8 +409,8 @@ Resources:
           Owner: AWS
           SourceIdentifier: API_GWV2_ACCESS_LOGS_ENABLED
 
-  APIGWv2AuthorizationTypeConfigured
-    Condition: CommercialPartition:
+  APIGWv2AuthorizationTypeConfigured:
+    Condition: CommercialPartition
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: api-gwv2-authorization-type-configured
@@ -430,8 +430,8 @@ Resources:
           Owner: AWS
           SourceIdentifier: SNS_ENCRYPTED_KMS
 
-  SNSTopicMessageDeliveryNotificationEnabled
-    Condition: CommercialPartition:
+  SNSTopicMessageDeliveryNotificationEnabled:
+    Condition: CommercialPartition
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: sns-topic-message-delivery-notification-enabled
@@ -451,8 +451,8 @@ Resources:
   # Step Functions - Agent Orchestration (1 rule)
   # ============================================
 
-  StepFunctionsStateMachineLoggingEnabled
-    Condition: CommercialPartition:
+  StepFunctionsStateMachineLoggingEnabled:
+    Condition: CommercialPartition
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: step-functions-state-machine-logging-enabled
@@ -464,8 +464,8 @@ Resources:
   # Neptune - Vector Database for RAG (9 rules)
   # ============================================
 
-  NeptuneClusterBackupRetention
-    Condition: CommercialPartition:
+  NeptuneClusterBackupRetention:
+    Condition: CommercialPartition
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: neptune-cluster-backup-retention-check
@@ -473,8 +473,8 @@ Resources:
           Owner: AWS
           SourceIdentifier: NEPTUNE_CLUSTER_BACKUP_RETENTION_CHECK
 
-  NeptuneClusterCloudWatchLogExport
-    Condition: CommercialPartition:
+  NeptuneClusterCloudWatchLogExport:
+    Condition: CommercialPartition
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: neptune-cluster-cloudwatch-log-export-enabled
@@ -482,8 +482,8 @@ Resources:
           Owner: AWS
           SourceIdentifier: NEPTUNE_CLUSTER_CLOUDWATCH_LOG_EXPORT_ENABLED
 
-  NeptuneClusterCopyTagsToSnapshot
-    Condition: CommercialPartition:
+  NeptuneClusterCopyTagsToSnapshot:
+    Condition: CommercialPartition
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: neptune-cluster-copy-tags-to-snapshot-enabled
@@ -491,8 +491,8 @@ Resources:
           Owner: AWS
           SourceIdentifier: NEPTUNE_CLUSTER_COPY_TAGS_TO_SNAPSHOT_ENABLED
 
-  NeptuneClusterDeletionProtection
-    Condition: CommercialPartition:
+  NeptuneClusterDeletionProtection:
+    Condition: CommercialPartition
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: neptune-cluster-deletion-protection-enabled
@@ -500,8 +500,8 @@ Resources:
           Owner: AWS
           SourceIdentifier: NEPTUNE_CLUSTER_DELETION_PROTECTION_ENABLED
 
-  NeptuneClusterEncrypted
-    Condition: CommercialPartition:
+  NeptuneClusterEncrypted:
+    Condition: CommercialPartition
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: neptune-cluster-encrypted
@@ -509,8 +509,8 @@ Resources:
           Owner: AWS
           SourceIdentifier: NEPTUNE_CLUSTER_ENCRYPTED
 
-  NeptuneClusterIAMAuth
-    Condition: CommercialPartition:
+  NeptuneClusterIAMAuth:
+    Condition: CommercialPartition
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: neptune-cluster-iam-database-authentication
@@ -518,8 +518,8 @@ Resources:
           Owner: AWS
           SourceIdentifier: NEPTUNE_CLUSTER_IAM_DATABASE_AUTHENTICATION
 
-  NeptuneClusterMultiAZ
-    Condition: CommercialPartition:
+  NeptuneClusterMultiAZ:
+    Condition: CommercialPartition
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: neptune-cluster-multi-az-enabled
@@ -527,8 +527,8 @@ Resources:
           Owner: AWS
           SourceIdentifier: NEPTUNE_CLUSTER_MULTI_AZ_ENABLED
 
-  NeptuneClusterSnapshotEncrypted
-    Condition: CommercialPartition:
+  NeptuneClusterSnapshotEncrypted:
+    Condition: CommercialPartition
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: neptune-cluster-snapshot-encrypted
@@ -536,8 +536,8 @@ Resources:
           Owner: AWS
           SourceIdentifier: NEPTUNE_CLUSTER_SNAPSHOT_ENCRYPTED
 
-  NeptuneClusterSnapshotPublicProhibited
-    Condition: CommercialPartition:
+  NeptuneClusterSnapshotPublicProhibited:
+    Condition: CommercialPartition
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: neptune-cluster-snapshot-public-prohibited
@@ -565,8 +565,8 @@ Resources:
           Owner: AWS
           SourceIdentifier: RDS_CLUSTER_DELETION_PROTECTION_ENABLED
 
-  RDSClusterEncryptedAtRest
-    Condition: CommercialPartition:
+  RDSClusterEncryptedAtRest:
+    Condition: CommercialPartition
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: rds-cluster-encrypted-at-rest
@@ -590,8 +590,8 @@ Resources:
           Owner: AWS
           SourceIdentifier: RDS_CLUSTER_MULTI_AZ_ENABLED
 
-  # RDSDBSecurityGroupNotAllowed
-    Condition: CommercialPartition:
+  # RDSDBSecurityGroupNotAllowed:
+    Condition: CommercialPartition
   #     Type: AWS::Config::ConfigRule
   #     Properties:
   #       ConfigRuleName: rds-db-security-group-not-allowed
@@ -687,8 +687,8 @@ Resources:
           Owner: AWS
           SourceIdentifier: RDS_LAST_BACKUP_RECOVERY_POINT_CREATED
 
-  RDSClusterDefaultAdminCheck
-    Condition: CommercialPartition:
+  RDSClusterDefaultAdminCheck:
+    Condition: CommercialPartition
       Type: AWS::Config::ConfigRule
       Properties:
         ConfigRuleName: rds-cluster-default-admin-check

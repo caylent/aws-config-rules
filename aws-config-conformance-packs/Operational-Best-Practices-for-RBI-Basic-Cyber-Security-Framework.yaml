@@ -278,8 +278,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: CMK_BACKING_KEY_ROTATION_ENABLED
     Type: AWS::Config::ConfigRule
-  CodebuildProjectArtifactEncryption
-    Condition: CommercialPartition:
+  CodebuildProjectArtifactEncryption:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: codebuild-project-artifact-encryption
       Scope:
@@ -530,8 +530,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: ELB_TLS_HTTPS_LISTENERS_ONLY
     Type: AWS::Config::ConfigRule
-  Elbv2AcmCertificateRequired
-    Condition: CommercialPartition:
+  Elbv2AcmCertificateRequired:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: elbv2-acm-certificate-required
       Source:
@@ -755,8 +755,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: NO_UNRESTRICTED_ROUTE_TO_IGW
     Type: AWS::Config::ConfigRule
-  OpensearchAuditLoggingEnabled
-    Condition: CommercialPartition:
+  OpensearchAuditLoggingEnabled:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: opensearch-audit-logging-enabled
       Scope:
@@ -766,8 +766,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: OPENSEARCH_AUDIT_LOGGING_ENABLED
     Type: AWS::Config::ConfigRule
-  OpensearchEncryptedAtRest
-    Condition: CommercialPartition:
+  OpensearchEncryptedAtRest:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: opensearch-encrypted-at-rest
       Scope:
@@ -777,8 +777,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: OPENSEARCH_ENCRYPTED_AT_REST
     Type: AWS::Config::ConfigRule
-  OpensearchHttpsRequired
-    Condition: CommercialPartition:
+  OpensearchHttpsRequired:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: opensearch-https-required
       Scope:
@@ -788,8 +788,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: OPENSEARCH_HTTPS_REQUIRED
     Type: AWS::Config::ConfigRule
-  OpensearchLogsToCloudwatch
-    Condition: CommercialPartition:
+  OpensearchLogsToCloudwatch:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: opensearch-logs-to-cloudwatch
       Scope:
@@ -799,8 +799,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: OPENSEARCH_LOGS_TO_CLOUDWATCH
     Type: AWS::Config::ConfigRule
-  OpensearchNodeToNodeEncryptionCheck
-    Condition: CommercialPartition:
+  OpensearchNodeToNodeEncryptionCheck:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: opensearch-node-to-node-encryption-check
       Scope:
@@ -879,8 +879,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: RDS_STORAGE_ENCRYPTED
     Type: AWS::Config::ConfigRule
-  RedshiftAuditLoggingEnabled
-    Condition: CommercialPartition:
+  RedshiftAuditLoggingEnabled:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: redshift-audit-logging-enabled
       Scope:
@@ -1201,8 +1201,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: VPC_SG_OPEN_ONLY_TO_AUTHORIZED_PORTS
     Type: AWS::Config::ConfigRule
-  WafRegionalRuleNotEmpty
-    Condition: CommercialPartition:
+  WafRegionalRuleNotEmpty:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: waf-regional-rule-not-empty
       Scope:
@@ -1212,8 +1212,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: WAF_REGIONAL_RULE_NOT_EMPTY
     Type: AWS::Config::ConfigRule
-  WafRegionalRulegroupNotEmpty
-    Condition: CommercialPartition:
+  WafRegionalRulegroupNotEmpty:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: waf-regional-rulegroup-not-empty
       Scope:
@@ -1223,8 +1223,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: WAF_REGIONAL_RULEGROUP_NOT_EMPTY
     Type: AWS::Config::ConfigRule
-  WafRegionalWebaclNotEmpty
-    Condition: CommercialPartition:
+  WafRegionalWebaclNotEmpty:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: waf-regional-webacl-not-empty
       Scope:
@@ -1241,8 +1241,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: WAFV2_LOGGING_ENABLED
     Type: AWS::Config::ConfigRule
-  VulnManagementPlanExists
-    Condition: CommercialPartition:
+  VulnManagementPlanExists:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: vuln-management-plan-exists
       Description: Ensure a vulnerability management plan is developed and implemented in order to have a formally defined processes to address vulnerabilities in your environment.
@@ -1250,8 +1250,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: AWS_CONFIG_PROCESS_CHECK
     Type: AWS::Config::ConfigRule
-  SecurityAwarenessProgramExists
-    Condition: CommercialPartition:
+  SecurityAwarenessProgramExists:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: security-awareness-program-exists
       Description: Establish and maintain a security awareness program for your organization. Security awareness programs educate employees on how to protect their organization from various security breaches or incidents.

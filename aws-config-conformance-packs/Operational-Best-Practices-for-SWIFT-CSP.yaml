@@ -286,8 +286,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: EC2_INSTANCE_PROFILE_ATTACHED
     Type: AWS::Config::ConfigRule
-  Ec2NoAmazonKeyPair
-    Condition: CommercialPartition:
+  Ec2NoAmazonKeyPair:
+    Condition: CommercialPartition
     Controls:
     - '1.1'
     Properties:
@@ -313,8 +313,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: EC2_STOPPED_INSTANCE
     Type: AWS::Config::ConfigRule
-  Ec2TokenHopLimitCheck
-    Condition: CommercialPartition:
+  Ec2TokenHopLimitCheck:
+    Condition: CommercialPartition
     Controls:
     - '2.3'
     Properties:
@@ -771,8 +771,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: RESTRICTED_INCOMING_TRAFFIC
     Type: AWS::Config::ConfigRule
-  RootAccountHardwareMfaEnabled
-    Condition: CommercialPartition:
+  RootAccountHardwareMfaEnabled:
+    Condition: CommercialPartition
     Controls:
     - '4.2'
     Properties:
@@ -783,8 +783,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: ROOT_ACCOUNT_HARDWARE_MFA_ENABLED
     Type: AWS::Config::ConfigRule
-  RootAccountMfaEnabled
-    Condition: CommercialPartition:
+  RootAccountMfaEnabled:
+    Condition: CommercialPartition
     Controls:
     - '4.2'
     Properties:
@@ -1033,8 +1033,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: SNS_ENCRYPTED_KMS
     Type: AWS::Config::ConfigRule
-  SnsTopicMessageDeliveryNotificationEnabled
-    Condition: CommercialPartition:
+  SnsTopicMessageDeliveryNotificationEnabled:
+    Condition: CommercialPartition
     Controls:
     - '1.2'
     Properties:

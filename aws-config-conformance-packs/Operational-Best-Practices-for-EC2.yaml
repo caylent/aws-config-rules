@@ -166,8 +166,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: EC2_MANAGEDINSTANCE_PATCH_COMPLIANCE_STATUS_CHECK
     Type: AWS::Config::ConfigRule
-  Ec2NoAmazonKeyPair
-    Condition: CommercialPartition:
+  Ec2NoAmazonKeyPair:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: ec2-no-amazon-key-pair
       Scope:
@@ -194,8 +194,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: EC2_STOPPED_INSTANCE
     Type: AWS::Config::ConfigRule
-  Ec2TokenHopLimitCheck
-    Condition: CommercialPartition:
+  Ec2TokenHopLimitCheck:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: ec2-token-hop-limit-check
       Scope:

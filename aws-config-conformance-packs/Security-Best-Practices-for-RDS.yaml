@@ -27,8 +27,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: RDS_AUTOMATIC_MINOR_VERSION_UPGRADE_ENABLED
     Type: AWS::Config::ConfigRule
-  RdsClusterDefaultAdminCheck
-    Condition: CommercialPartition:
+  RdsClusterDefaultAdminCheck:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: rds-cluster-default-admin-check
       Scope:

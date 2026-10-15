@@ -94,8 +94,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: CMK_BACKING_KEY_ROTATION_ENABLED
     Type: AWS::Config::ConfigRule
-  CodebuildProjectArtifactEncryption
-    Condition: CommercialPartition:
+  CodebuildProjectArtifactEncryption:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: codebuild-project-artifact-encryption
       Scope:
@@ -166,8 +166,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: ELB_TLS_HTTPS_LISTENERS_ONLY
     Type: AWS::Config::ConfigRule
-  Elbv2AcmCertificateRequired
-    Condition: CommercialPartition:
+  Elbv2AcmCertificateRequired:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: elbv2-acm-certificate-required
       Source:
@@ -238,8 +238,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: KMS_CMK_NOT_SCHEDULED_FOR_DELETION
     Type: AWS::Config::ConfigRule
-  OpensearchEncryptedAtRest
-    Condition: CommercialPartition:
+  OpensearchEncryptedAtRest:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: opensearch-encrypted-at-rest
       Scope:
@@ -249,8 +249,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: OPENSEARCH_ENCRYPTED_AT_REST
     Type: AWS::Config::ConfigRule
-  OpensearchHttpsRequired
-    Condition: CommercialPartition:
+  OpensearchHttpsRequired:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: opensearch-https-required
       Scope:
@@ -260,8 +260,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: OPENSEARCH_HTTPS_REQUIRED
     Type: AWS::Config::ConfigRule
-  OpensearchNodeToNodeEncryptionCheck
-    Condition: CommercialPartition:
+  OpensearchNodeToNodeEncryptionCheck:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: opensearch-node-to-node-encryption-check
       Scope:

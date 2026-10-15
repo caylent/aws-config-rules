@@ -8,8 +8,8 @@
 ##################################################################################
 
 Resources:
-  CodebuildProjectArtifactEncryption
-    Condition: CommercialPartition:
+  CodebuildProjectArtifactEncryption:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: codebuild-project-artifact-encryption
       Scope:

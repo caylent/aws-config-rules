@@ -45,8 +45,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: AURORA_RESOURCES_PROTECTED_BY_BACKUP_PLAN
     Type: AWS::Config::ConfigRule
-  AutoscalingCapacityRebalancing
-    Condition: CommercialPartition:
+  AutoscalingCapacityRebalancing:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: autoscaling-capacity-rebalancing
       Scope:
@@ -66,8 +66,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: AUTOSCALING_GROUP_ELB_HEALTHCHECK_REQUIRED
     Type: AWS::Config::ConfigRule
-  AutoscalingMultipleAz
-    Condition: CommercialPartition:
+  AutoscalingMultipleAz:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: autoscaling-multiple-az
       Scope:
@@ -159,8 +159,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: BEANSTALK_ENHANCED_HEALTH_REPORTING_ENABLED
     Type: AWS::Config::ConfigRule
-  ClbMultipleAz
-    Condition: CommercialPartition:
+  ClbMultipleAz:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: clb-multiple-az
       Scope:
@@ -326,8 +326,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: LAMBDA_CONCURRENCY_CHECK
     Type: AWS::Config::ConfigRule
-  LambdaVpcMultiAzCheck
-    Condition: CommercialPartition:
+  LambdaVpcMultiAzCheck:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: lambda-vpc-multi-az-check
       Scope:
@@ -337,8 +337,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: LAMBDA_VPC_MULTI_AZ_CHECK
     Type: AWS::Config::ConfigRule
-  OpensearchDataNodeFaultTolerance
-    Condition: CommercialPartition:
+  OpensearchDataNodeFaultTolerance:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: opensearch-data-node-fault-tolerance
       Scope:

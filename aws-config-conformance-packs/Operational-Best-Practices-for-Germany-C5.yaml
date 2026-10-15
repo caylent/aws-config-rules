@@ -255,8 +255,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: BEANSTALK_ENHANCED_HEALTH_REPORTING_ENABLED
     Type: AWS::Config::ConfigRule
-  ClbMultipleAz
-    Condition: CommercialPartition:
+  ClbMultipleAz:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: clb-multiple-az
       Scope:
@@ -322,8 +322,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: CMK_BACKING_KEY_ROTATION_ENABLED
     Type: AWS::Config::ConfigRule
-  CodebuildProjectArtifactEncryption
-    Condition: CommercialPartition:
+  CodebuildProjectArtifactEncryption:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: codebuild-project-artifact-encryption
       Scope:
@@ -504,8 +504,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: ECS_TASK_DEFINITION_USER_FOR_HOST_MODE_CHECK
     Type: AWS::Config::ConfigRule
-  EfsAccessPointEnforceRootDirectory
-    Condition: CommercialPartition:
+  EfsAccessPointEnforceRootDirectory:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: efs-access-point-enforce-root-directory
       Scope:
@@ -627,8 +627,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: ELB_TLS_HTTPS_LISTENERS_ONLY
     Type: AWS::Config::ConfigRule
-  Elbv2MultipleAz
-    Condition: CommercialPartition:
+  Elbv2MultipleAz:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: elbv2-multiple-az
       Scope:
@@ -856,8 +856,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: LAMBDA_INSIDE_VPC
     Type: AWS::Config::ConfigRule
-  LambdaVpcMultiAzCheck
-    Condition: CommercialPartition:
+  LambdaVpcMultiAzCheck:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: lambda-vpc-multi-az-check
       Scope:
@@ -881,8 +881,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: MULTI_REGION_CLOUD_TRAIL_ENABLED
     Type: AWS::Config::ConfigRule
-  OpensearchAccessControlEnabled
-    Condition: CommercialPartition:
+  OpensearchAccessControlEnabled:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: opensearch-access-control-enabled
       Scope:
@@ -892,8 +892,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: OPENSEARCH_ACCESS_CONTROL_ENABLED
     Type: AWS::Config::ConfigRule
-  OpensearchAuditLoggingEnabled
-    Condition: CommercialPartition:
+  OpensearchAuditLoggingEnabled:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: opensearch-audit-logging-enabled
       Scope:
@@ -903,8 +903,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: OPENSEARCH_AUDIT_LOGGING_ENABLED
     Type: AWS::Config::ConfigRule
-  OpensearchDataNodeFaultTolerance
-    Condition: CommercialPartition:
+  OpensearchDataNodeFaultTolerance:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: opensearch-data-node-fault-tolerance
       Scope:
@@ -914,8 +914,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: OPENSEARCH_DATA_NODE_FAULT_TOLERANCE
     Type: AWS::Config::ConfigRule
-  OpensearchEncryptedAtRest
-    Condition: CommercialPartition:
+  OpensearchEncryptedAtRest:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: opensearch-encrypted-at-rest
       Scope:
@@ -925,8 +925,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: OPENSEARCH_ENCRYPTED_AT_REST
     Type: AWS::Config::ConfigRule
-  OpensearchHttpsRequired
-    Condition: CommercialPartition:
+  OpensearchHttpsRequired:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: opensearch-https-required
       Scope:
@@ -936,8 +936,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: OPENSEARCH_HTTPS_REQUIRED
     Type: AWS::Config::ConfigRule
-  OpensearchInVpcOnly
-    Condition: CommercialPartition:
+  OpensearchInVpcOnly:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: opensearch-in-vpc-only
       Scope:
@@ -947,8 +947,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: OPENSEARCH_IN_VPC_ONLY
     Type: AWS::Config::ConfigRule
-  OpensearchLogsToCloudwatch
-    Condition: CommercialPartition:
+  OpensearchLogsToCloudwatch:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: opensearch-logs-to-cloudwatch
       Scope:
@@ -958,8 +958,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: OPENSEARCH_LOGS_TO_CLOUDWATCH
     Type: AWS::Config::ConfigRule
-  OpensearchNodeToNodeEncryptionCheck
-    Condition: CommercialPartition:
+  OpensearchNodeToNodeEncryptionCheck:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: opensearch-node-to-node-encryption-check
       Scope:
@@ -1058,8 +1058,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: RDS_STORAGE_ENCRYPTED
     Type: AWS::Config::ConfigRule
-  RedshiftAuditLoggingEnabled
-    Condition: CommercialPartition:
+  RedshiftAuditLoggingEnabled:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: redshift-audit-logging-enabled
       Scope:
@@ -1156,16 +1156,16 @@ Resources:
         Owner: AWS
         SourceIdentifier: RESTRICTED_INCOMING_TRAFFIC
     Type: AWS::Config::ConfigRule
-  RootAccountHardwareMfaEnabled
-    Condition: CommercialPartition:
+  RootAccountHardwareMfaEnabled:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: root-account-hardware-mfa-enabled
       Source:
         Owner: AWS
         SourceIdentifier: ROOT_ACCOUNT_HARDWARE_MFA_ENABLED
     Type: AWS::Config::ConfigRule
-  RootAccountMfaEnabled
-    Condition: CommercialPartition:
+  RootAccountMfaEnabled:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: root-account-mfa-enabled
       Source:
@@ -1358,8 +1358,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: VPC_SG_OPEN_ONLY_TO_AUTHORIZED_PORTS
     Type: AWS::Config::ConfigRule
-  WafRegionalRuleNotEmpty
-    Condition: CommercialPartition:
+  WafRegionalRuleNotEmpty:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: waf-regional-rule-not-empty
       Scope:
@@ -1369,8 +1369,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: WAF_REGIONAL_RULE_NOT_EMPTY
     Type: AWS::Config::ConfigRule
-  WafRegionalRulegroupNotEmpty
-    Condition: CommercialPartition:
+  WafRegionalRulegroupNotEmpty:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: waf-regional-rulegroup-not-empty
       Scope:
@@ -1380,8 +1380,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: WAF_REGIONAL_RULEGROUP_NOT_EMPTY
     Type: AWS::Config::ConfigRule
-  WafRegionalWebaclNotEmpty
-    Condition: CommercialPartition:
+  WafRegionalWebaclNotEmpty:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: waf-regional-webacl-not-empty
       Scope:
