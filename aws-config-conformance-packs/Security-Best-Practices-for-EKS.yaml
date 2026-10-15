@@ -9,8 +9,7 @@
 ##################################################################################
 
 Parameters:
-  EksClusterOldestSupportedVersion
-    Condition: CommercialPartitionParamOldestVersionSupported:
+  EksClusterOldestSupportedVersionParamOldestVersionSupported:
     Default: '1.2'
     Type: String
   EksClusterSupportedVersionParamOldestVersionSupported:
@@ -25,8 +24,7 @@ Resources:
         oldestVersionSupported:
           Fn::If:
           - eksClusterOldestSupportedVersionParamOldestVersionSupported
-          - Ref: EksClusterOldestSupportedVersion
-    Condition: CommercialPartitionParamOldestVersionSupported
+          - Ref: EksClusterOldestSupportedVersionParamOldestVersionSupported
           - Ref: AWS::NoValue
       Scope:
         ComplianceResourceTypes:
@@ -74,8 +72,7 @@ Conditions:
     Fn::Not:
     - Fn::Equals:
       - ''
-      - Ref: EksClusterOldestSupportedVersion
-    Condition: CommercialPartitionParamOldestVersionSupported
+      - Ref: EksClusterOldestSupportedVersionParamOldestVersionSupported
   eksClusterSupportedVersionParamOldestVersionSupported:
     Fn::Not:
     - Fn::Equals:

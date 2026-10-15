@@ -19,8 +19,7 @@ Parameters:
   AlbDesyncModeCheckParamDesyncMode:
     Default: defensive', 'strictest'
     Type: String
-  EcsNoEnvironmentSecrets
-    Condition: CommercialPartitionParamSecretKeys:
+  EcsNoEnvironmentSecretsParamSecretKeys:
     Default: AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, ECS_ENGINE_AUTH_DATA
     Type: String
   IamCustomerPolicyBlockedKmsActionsParamBlockedActionsPatterns:
@@ -442,8 +441,7 @@ Resources:
         secretKeys:
           Fn::If:
           - ecsNoEnvironmentSecretsParamSecretKeys
-          - Ref: EcsNoEnvironmentSecrets
-    Condition: CommercialPartitionParamSecretKeys
+          - Ref: EcsNoEnvironmentSecretsParamSecretKeys
           - Ref: AWS::NoValue
       Scope:
         ComplianceResourceTypes:
@@ -1468,8 +1466,7 @@ Conditions:
     Fn::Not:
     - Fn::Equals:
       - ''
-      - Ref: EcsNoEnvironmentSecrets
-    Condition: CommercialPartitionParamSecretKeys
+      - Ref: EcsNoEnvironmentSecretsParamSecretKeys
   iamCustomerPolicyBlockedKmsActionsParamBlockedActionsPatterns:
     Fn::Not:
     - Fn::Equals:

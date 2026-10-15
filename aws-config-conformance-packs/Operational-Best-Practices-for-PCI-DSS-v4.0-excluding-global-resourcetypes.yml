@@ -30,19 +30,16 @@ Parameters:
   LambdaFunctionSettingsCheckParamRuntime:
     Default: python3.9, java11, java8.al2, nodejs20.x,nodejs18.x,python3.12, python3.11,python3.10,java21,java17,dotnet8,ruby3.3,ruby3.2
     Type: String
-  NetfwPolicyDefaultActionFragmentPackets
-    Condition: CommercialPartitionParamStatelessFragmentDefaultActions:
+  NetfwPolicyDefaultActionFragmentPacketsParamStatelessFragmentDefaultActions:
     Default: aws:drop,aws:forward_to_sfe
     Type: String
-  NetfwPolicyDefaultActionFullPackets
-    Condition: CommercialPartitionParamStatelessDefaultActions:
+  NetfwPolicyDefaultActionFullPacketsParamStatelessDefaultActions:
     Default: aws:drop,aws:forward_to_sfe
     Type: String
   Ec2VolumeInuseCheckParamDeleteOnTermination:
     Default: 'true'
     Type: String
-  EksClusterOldestSupportedVersion
-    Condition: CommercialPartitionParamOldestVersionSupported:
+  EksClusterOldestSupportedVersionParamOldestVersionSupported:
     Default: '1.2'
     Type: String
   CloudwatchAlarmActionCheckParamAlarmActionRequired:
@@ -188,8 +185,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: FSX_RESOURCES_PROTECTED_BY_BACKUP_PLAN
     Type: AWS::Config::ConfigRule
-  NeptuneClusterBackupRetention
-    Condition: CommercialPartitionCheck:
+  NeptuneClusterBackupRetentionCheck:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: neptune-cluster-backup-retention-check
       Scope:
@@ -407,8 +404,8 @@ Resources:
         Owner: AWS
         SourceIdentifier: MACIE_AUTO_SENSITIVE_DATA_DISCOVERY_CHECK
     Type: AWS::Config::ConfigRule
-  MacieStatus
-    Condition: CommercialPartitionCheck:
+  MacieStatusCheck:
+    Condition: CommercialPartition
     Properties:
       ConfigRuleName: macie-status-check
       Source:
@@ -455,8 +452,7 @@ Resources:
         statelessFragmentDefaultActions:
           Fn::If:
           - netfwPolicyDefaultActionFragmentPacketsParamStatelessFragmentDefaultActions
-          - Ref: NetfwPolicyDefaultActionFragmentPackets
-    Condition: CommercialPartitionParamStatelessFragmentDefaultActions
+          - Ref: NetfwPolicyDefaultActionFragmentPacketsParamStatelessFragmentDefaultActions
           - Ref: AWS::NoValue
       Scope:
         ComplianceResourceTypes:
@@ -473,8 +469,7 @@ Resources:
         statelessDefaultActions:
           Fn::If:
           - netfwPolicyDefaultActionFullPacketsParamStatelessDefaultActions
-          - Ref: NetfwPolicyDefaultActionFullPackets
-    Condition: CommercialPartitionParamStatelessDefaultActions
+          - Ref: NetfwPolicyDefaultActionFullPacketsParamStatelessDefaultActions
           - Ref: AWS::NoValue
       Scope:
         ComplianceResourceTypes:
@@ -597,8 +592,7 @@ Resources:
         oldestVersionSupported:
           Fn::If:
           - eksClusterOldestSupportedVersionParamOldestVersionSupported
-          - Ref: EksClusterOldestSupportedVersion
-    Condition: CommercialPartitionParamOldestVersionSupported
+          - Ref: EksClusterOldestSupportedVersionParamOldestVersionSupported
           - Ref: AWS::NoValue
       Scope:
         ComplianceResourceTypes:
@@ -1174,14 +1168,12 @@ Conditions:
     Fn::Not:
     - Fn::Equals:
       - ''
-      - Ref: NetfwPolicyDefaultActionFragmentPackets
-    Condition: CommercialPartitionParamStatelessFragmentDefaultActions
+      - Ref: NetfwPolicyDefaultActionFragmentPacketsParamStatelessFragmentDefaultActions
   netfwPolicyDefaultActionFullPacketsParamStatelessDefaultActions:
     Fn::Not:
     - Fn::Equals:
       - ''
-      - Ref: NetfwPolicyDefaultActionFullPackets
-    Condition: CommercialPartitionParamStatelessDefaultActions
+      - Ref: NetfwPolicyDefaultActionFullPacketsParamStatelessDefaultActions
   ec2VolumeInuseCheckParamDeleteOnTermination:
     Fn::Not:
     - Fn::Equals:
@@ -1191,8 +1183,7 @@ Conditions:
     Fn::Not:
     - Fn::Equals:
       - ''
-      - Ref: EksClusterOldestSupportedVersion
-    Condition: CommercialPartitionParamOldestVersionSupported
+      - Ref: EksClusterOldestSupportedVersionParamOldestVersionSupported
   cloudwatchAlarmActionCheckParamAlarmActionRequired:
     Fn::Not:
     - Fn::Equals:

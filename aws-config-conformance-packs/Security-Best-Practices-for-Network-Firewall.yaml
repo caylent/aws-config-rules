@@ -7,12 +7,12 @@
 ##################################################################################
 
 Parameters:
-  NetfwPolicyDefaultActionFragmentPackets
-    Condition: CommercialPartitionParamStatelessFragmentDefaultActions:
+  NetfwPolicyDefaultActionFragmentPacketsParamStatelessFragmentDefaultActions:
+    Condition: CommercialPartition
     Default: aws:drop,aws:forward_to_sfe
     Type: String
-  NetfwPolicyDefaultActionFullPackets
-    Condition: CommercialPartitionParamStatelessDefaultActions:
+  NetfwPolicyDefaultActionFullPacketsParamStatelessDefaultActions:
+    Condition: CommercialPartition
     Default: aws:drop,aws:forward_to_sfe
     Type: String
 Resources:
@@ -24,8 +24,7 @@ Resources:
         statelessFragmentDefaultActions:
           Fn::If:
           - netfwPolicyDefaultActionFragmentPacketsParamStatelessFragmentDefaultActions
-          - Ref: NetfwPolicyDefaultActionFragmentPackets
-    Condition: CommercialPartitionParamStatelessFragmentDefaultActions
+          - Ref: NetfwPolicyDefaultActionFragmentPacketsParamStatelessFragmentDefaultActions
           - Ref: AWS::NoValue
       Scope:
         ComplianceResourceTypes:
@@ -42,8 +41,7 @@ Resources:
         statelessDefaultActions:
           Fn::If:
           - netfwPolicyDefaultActionFullPacketsParamStatelessDefaultActions
-          - Ref: NetfwPolicyDefaultActionFullPackets
-    Condition: CommercialPartitionParamStatelessDefaultActions
+          - Ref: NetfwPolicyDefaultActionFullPacketsParamStatelessDefaultActions
           - Ref: AWS::NoValue
       Scope:
         ComplianceResourceTypes:
@@ -81,11 +79,9 @@ Conditions:
     Fn::Not:
     - Fn::Equals:
       - ''
-      - Ref: NetfwPolicyDefaultActionFragmentPackets
-    Condition: CommercialPartitionParamStatelessFragmentDefaultActions
+      - Ref: NetfwPolicyDefaultActionFragmentPacketsParamStatelessFragmentDefaultActions
   netfwPolicyDefaultActionFullPacketsParamStatelessDefaultActions:
     Fn::Not:
     - Fn::Equals:
       - ''
-      - Ref: NetfwPolicyDefaultActionFullPackets
-    Condition: CommercialPartitionParamStatelessDefaultActions
+      - Ref: NetfwPolicyDefaultActionFullPacketsParamStatelessDefaultActions
