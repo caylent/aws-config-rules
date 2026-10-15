@@ -558,7 +558,6 @@ Resources:
     Type: AWS::Config::ConfigRule
   EcsTaskDefinitionMemoryHardLimit
     Condition: CommercialPartition:
-    Condition: CommercialPartition
     Properties:
       ConfigRuleName: ecs-task-definition-memory-hard-limit
       Scope:
@@ -689,7 +688,6 @@ Resources:
     Type: AWS::Config::ConfigRule
   Elbv2AcmCertificateRequired
     Condition: CommercialPartition:
-    Condition: CommercialPartition
     Properties:
       ConfigRuleName: elbv2-acm-certificate-required
       Source:
@@ -1027,7 +1025,6 @@ Resources:
     Type: AWS::Config::ConfigRule
   OpensearchLogsToCloudwatch
     Condition: CommercialPartition:
-    Condition: CommercialPartition
     Properties:
       ConfigRuleName: opensearch-logs-to-cloudwatch
       Scope:
@@ -1230,7 +1227,6 @@ Resources:
     Type: AWS::Config::ConfigRule
   RootAccountHardwareMfaEnabled
     Condition: CommercialPartition:
-    Condition: CommercialPartition
     Properties:
       ConfigRuleName: root-account-hardware-mfa-enabled
       Source:
@@ -1239,7 +1235,6 @@ Resources:
     Type: AWS::Config::ConfigRule
   RootAccountMfaEnabled
     Condition: CommercialPartition:
-    Condition: CommercialPartition
     Properties:
       ConfigRuleName: root-account-mfa-enabled
       Source:
@@ -1459,10 +1454,6 @@ Resources:
         SourceIdentifier: WAFV2_LOGGING_ENABLED
     Type: AWS::Config::ConfigRule
 Conditions:
-  CommercialPartition:
-    Fn::Equals:
-      - Ref: AWS::Partition
-      - aws
   CommercialPartition:
     Fn::Equals:
       - Ref: AWS::Partition

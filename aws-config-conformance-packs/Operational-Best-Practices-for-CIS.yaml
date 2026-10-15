@@ -79,7 +79,6 @@ Resources:
     Type: AWS::Config::ConfigRule
     Properties:
       ConfigRuleName: RootAccountMFAEnabled
-    Condition: CommercialPartition
       Description: Checks whether the root user of your AWS account requires multi-factor
         authentication for console sign-in.
       Source:
@@ -91,7 +90,6 @@ Resources:
     Type: AWS::Config::ConfigRule
     Properties:
       ConfigRuleName: RootAccountHardwareMFAEnabled
-    Condition: CommercialPartition
       Description: Checks whether your AWS account is enabled to use multi-factor
         authentication (MFA) hardware device to sign in with root credentials.
       Source:
@@ -277,3 +275,8 @@ Resources:
       Source:
         Owner: AWS
         SourceIdentifier: VPC_DEFAULT_SECURITY_GROUP_CLOSED
+Conditions:
+  CommercialPartition:
+    Fn::Equals:
+      - Ref: AWS::Partition
+      - aws

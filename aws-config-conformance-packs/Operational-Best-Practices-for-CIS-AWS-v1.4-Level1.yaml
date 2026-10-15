@@ -438,7 +438,6 @@ Resources:
         SourceIdentifier: AWS_CONFIG_PROCESS_CHECK
     Type: AWS::Config::ConfigRule
   IAMAccessAnalyzerEnabled
-    Condition: CommercialPartition
     Condition: CommercialPartition:
     Properties:
       ConfigRuleName: iam-access-analyzer-enabled

@@ -289,7 +289,6 @@ Resources:
     Type: AWS::Config::ConfigRule
   CodebuildProjectArtifactEncryption
     Condition: CommercialPartition:
-    Condition: CommercialPartition
     Properties:
       ConfigRuleName: codebuild-project-artifact-encryption
       Scope:
@@ -619,7 +618,6 @@ Resources:
     Type: AWS::Config::ConfigRule
   Elbv2AcmCertificateRequired
     Condition: CommercialPartition:
-    Condition: CommercialPartition
     Properties:
       ConfigRuleName: elbv2-acm-certificate-required
       Source:
@@ -884,7 +882,6 @@ Resources:
     Type: AWS::Config::ConfigRule
   OpensearchEncryptedAtRest
     Condition: CommercialPartition:
-    Condition: CommercialPartition
     Properties:
       ConfigRuleName: opensearch-encrypted-at-rest
       Scope:
@@ -896,7 +893,6 @@ Resources:
     Type: AWS::Config::ConfigRule
   OpensearchHttpsRequired
     Condition: CommercialPartition:
-    Condition: CommercialPartition
     Properties:
       ConfigRuleName: opensearch-https-required
       Scope:
@@ -908,7 +904,6 @@ Resources:
     Type: AWS::Config::ConfigRule
   OpensearchInVpcOnly
     Condition: CommercialPartition:
-    Condition: CommercialPartition
     Properties:
       ConfigRuleName: opensearch-in-vpc-only
       Scope:
@@ -920,7 +915,6 @@ Resources:
     Type: AWS::Config::ConfigRule
   OpensearchLogsToCloudwatch
     Condition: CommercialPartition:
-    Condition: CommercialPartition
     Properties:
       ConfigRuleName: opensearch-logs-to-cloudwatch
       Scope:
@@ -932,7 +926,6 @@ Resources:
     Type: AWS::Config::ConfigRule
   OpensearchNodeToNodeEncryptionCheck
     Condition: CommercialPartition:
-    Condition: CommercialPartition
     Properties:
       ConfigRuleName: opensearch-node-to-node-encryption-check
       Scope:
@@ -1179,7 +1172,6 @@ Resources:
     Type: AWS::Config::ConfigRule
   RootAccountHardwareMfaEnabled
     Condition: CommercialPartition:
-    Condition: CommercialPartition
     Properties:
       ConfigRuleName: root-account-hardware-mfa-enabled
       Source:
@@ -1188,7 +1180,6 @@ Resources:
     Type: AWS::Config::ConfigRule
   RootAccountMfaEnabled
     Condition: CommercialPartition:
-    Condition: CommercialPartition
     Properties:
       ConfigRuleName: root-account-mfa-enabled
       Source:
@@ -1459,10 +1450,6 @@ Resources:
         SourceIdentifier: WAFV2_LOGGING_ENABLED
     Type: AWS::Config::ConfigRule
 Conditions:
-  CommercialPartition:
-    Fn::Equals:
-      - Ref: AWS::Partition
-      - aws
   CommercialPartition:
     Fn::Equals:
       - Ref: AWS::Partition

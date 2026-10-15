@@ -566,7 +566,6 @@ Resources:
     Type: AWS::Config::ConfigRule
   Elbv2AcmCertificateRequired
     Condition: CommercialPartition:
-    Condition: CommercialPartition
     Properties:
       ConfigRuleName: elbv2-acm-certificate-required
       Source:
@@ -834,7 +833,6 @@ Resources:
     Type: AWS::Config::ConfigRule
   OpensearchEncryptedAtRest
     Condition: CommercialPartition:
-    Condition: CommercialPartition
     Properties:
       ConfigRuleName: opensearch-encrypted-at-rest
       Scope:
@@ -846,7 +844,6 @@ Resources:
     Type: AWS::Config::ConfigRule
   OpensearchInVpcOnly
     Condition: CommercialPartition:
-    Condition: CommercialPartition
     Properties:
       ConfigRuleName: opensearch-in-vpc-only
       Scope:
@@ -858,7 +855,6 @@ Resources:
     Type: AWS::Config::ConfigRule
   OpensearchLogsToCloudwatch
     Condition: CommercialPartition:
-    Condition: CommercialPartition
     Properties:
       ConfigRuleName: opensearch-logs-to-cloudwatch
       Scope:
@@ -870,7 +866,6 @@ Resources:
     Type: AWS::Config::ConfigRule
   OpensearchNodeToNodeEncryptionCheck
     Condition: CommercialPartition:
-    Condition: CommercialPartition
     Properties:
       ConfigRuleName: opensearch-node-to-node-encryption-check
       Scope:
@@ -1116,7 +1111,6 @@ Resources:
     Type: AWS::Config::ConfigRule
   RootAccountHardwareMfaEnabled
     Condition: CommercialPartition:
-    Condition: CommercialPartition
     Properties:
       ConfigRuleName: root-account-hardware-mfa-enabled
       Source:
@@ -1125,7 +1119,6 @@ Resources:
     Type: AWS::Config::ConfigRule
   RootAccountMfaEnabled
     Condition: CommercialPartition:
-    Condition: CommercialPartition
     Properties:
       ConfigRuleName: root-account-mfa-enabled
       Source:
@@ -1360,7 +1353,6 @@ Resources:
     Type: AWS::Config::ConfigRule
   SecurityAwarenessProgramExists
     Condition: CommercialPartition:
-    Condition: CommercialPartition
     Properties:
       ConfigRuleName: security-awareness-program-exists
       Description: Establish and maintain a security awareness program for your organization. Security awareness programs educate employees on how to protect their organization from various security breaches or incidents.
@@ -1369,10 +1361,6 @@ Resources:
         SourceIdentifier: AWS_CONFIG_PROCESS_CHECK
     Type: AWS::Config::ConfigRule
 Conditions:
-  CommercialPartition:
-    Fn::Equals:
-      - Ref: AWS::Partition
-      - aws
   CommercialPartition:
     Fn::Equals:
       - Ref: AWS::Partition
